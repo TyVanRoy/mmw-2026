@@ -456,11 +456,106 @@
   ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
   ::-webkit-scrollbar-thumb:hover { background: var(--muted); }
 
+  /* MOBILE CARDS — hidden on desktop */
+  .card-list { display: none; }
+
   @media (max-width: 768px) {
-    .event-table th:nth-child(5),
-    .event-table td:nth-child(5) { display: none; }
-    .event-name { max-width: 180px; }
-    .genre-tags { max-width: 120px; }
+    /* Hide tables, show cards */
+    .event-table { display: none; }
+    .card-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    /* Day filter horizontal scroll */
+    #day-filter-row {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 4px;
+    }
+    #day-filter-row .filter-btn { flex-shrink: 0; }
+
+    /* Header */
+    header { padding: 32px 0 24px; margin-bottom: 24px; }
+    .title-block h1 { font-size: 48px; }
+    .filters { gap: 10px; margin-bottom: 24px; }
+    .search-bar input { min-width: 180px; }
+
+    /* Card */
+    .event-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 14px 16px;
+    }
+    .event-card.hidden { display: none; }
+
+    .card-top {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .card-top .star-btn { flex-shrink: 0; margin-top: 2px; }
+    .card-info { flex: 1; min-width: 0; }
+    .card-price {
+      flex-shrink: 0;
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      white-space: nowrap;
+      margin-top: 2px;
+    }
+
+    .card-name {
+      font-weight: 500;
+      font-size: 14px;
+      color: var(--text);
+      line-height: 1.3;
+    }
+    .card-artists {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      color: var(--muted);
+      margin-top: 3px;
+      line-height: 1.4;
+    }
+
+    .card-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px 12px;
+      margin-top: 10px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .card-venue {
+      font-size: 12px;
+      color: var(--text);
+    }
+    .card-area {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      color: var(--muted);
+    }
+    .card-time {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      color: var(--text);
+    }
+
+    .card-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 10px;
+      gap: 8px;
+    }
+    .card-bottom .genre-tags {
+      max-width: none;
+      flex: 1;
+    }
   }
 </style>
 </head>
@@ -471,11 +566,11 @@
     <div class="header-inner">
       <div class="title-block">
         <h1>MIAMI<span>MUSIC WEEK</span></h1>
-        <p class="subtitle">// Event Tracker — Mar 27–28, 2026</p>
+        <p class="subtitle">// Event Tracker — Mar 18 – Apr 1, 2026</p>
       </div>
       <div class="header-meta">
         <div>Source: <strong>19hz.info</strong></div>
-        <div>Days: <strong>Fri 3/27 + Sat 3/28</strong></div>
+        <div>Days: <strong>Mar 18 – Apr 1</strong></div>
         <div id="lastUpdated" style="opacity:0.5;font-size:0.75rem;">Last updated: —</div>
       </div>
     </div>
@@ -483,11 +578,10 @@
 
   <!-- FILTERS -->
   <div class="filters">
-    <div class="filter-row">
+    <div class="filter-row" id="day-filter-row">
       <span class="filter-label">Day</span>
       <button class="filter-btn active" data-filter="day" data-value="all">All</button>
-      <button class="filter-btn" data-filter="day" data-value="fri">Fri 3/27</button>
-      <button class="filter-btn" data-filter="day" data-value="sat">Sat 3/28</button>
+      <!-- Day buttons generated dynamically from event data -->
     </div>
     <div class="filter-row">
       <span class="filter-label">Time</span>
@@ -546,54 +640,8 @@
     <div style="color: var(--muted)">Click ⭐ to star events · Click column headers to sort</div>
   </div>
 
-  <!-- FRIDAY -->
-  <div class="day-section" id="section-fri">
-    <div class="day-header">
-      <h2>Friday, March 27</h2>
-      <span class="day-count" id="fri-count"></span>
-    </div>
-    <table class="event-table" id="fri-table">
-      <thead>
-        <tr>
-          <th></th>
-          <th data-col="name">Event</th>
-          <th data-col="venue">Venue</th>
-          <th data-col="time">Time</th>
-          <th data-col="type">Type</th>
-          <th data-col="genres">Genre</th>
-          <th data-col="price">Price</th>
-          <th>Link</th>
-        </tr>
-      </thead>
-      <tbody id="fri-body">
-      </tbody>
-    </table>
-    <div class="no-events-msg" id="fri-empty">No events match your filters.</div>
-  </div>
-
-  <!-- SATURDAY -->
-  <div class="day-section" id="section-sat">
-    <div class="day-header">
-      <h2>Saturday, March 28</h2>
-      <span class="day-count" id="sat-count"></span>
-    </div>
-    <table class="event-table" id="sat-table">
-      <thead>
-        <tr>
-          <th></th>
-          <th data-col="name">Event</th>
-          <th data-col="venue">Venue</th>
-          <th data-col="time">Time</th>
-          <th data-col="type">Type</th>
-          <th data-col="genres">Genre</th>
-          <th data-col="price">Price</th>
-          <th>Link</th>
-        </tr>
-      </thead>
-      <tbody id="sat-body">
-      </tbody>
-    </table>
-    <div class="no-events-msg" id="sat-empty">No events match your filters.</div>
+  <div id="day-sections">
+    <!-- Day sections generated dynamically from event data -->
   </div>
 
   <footer>SOURCE: 19HZ.INFO / MMW 2026 / TECHNO · HOUSE · TECH HOUSE / UPDATED FEB 2026</footer>
@@ -603,210 +651,210 @@
 let events = [
   // ── FRIDAY MARCH 27 — ALL 27 EVENTS ──────────────────────────────────────
   {
-    day: 'fri', name: 'TGTHR Pool Party', artists: 'Franky Rizardo, Mason Collective, Frank Storm, Grace Arribas, Amal Nemer',
+    day: '2026-03-27', name: 'TGTHR Pool Party', artists: 'Franky Rizardo, Mason Collective, Frank Storm, Grace Arribas, Amal Nemer',
     venue: 'Kimpton Surfcomber Hotel', area: 'Miami Beach',
     startHour: 12, timeDisplay: '12pm – 11pm', type: 'pool',
     genres: ['tech house'], priceRaw: 41, priceDisplay: '$41+', age: '21+',
     link: 'https://shotgun.live/en/events/tgthr-presents-surprise-headliner-franky-rizardo'
   },
   {
-    day: 'fri', name: 'Hugel & Friends', artists: 'Hugel',
+    day: '2026-03-27', name: 'Hugel & Friends', artists: 'Hugel',
     venue: 'National Hotel', area: 'Miami Beach',
     startHour: 12, timeDisplay: '12pm – 11pm', type: 'pool',
     genres: ['big room', 'latin house'], priceRaw: 53, priceDisplay: '$53–$296', age: '21+',
     link: 'https://dice.fm/event/mxloww-miami-music-week-day-2-the-originals-present-hiide-27th-mar-national-hotel-miami-tickets'
   },
   {
-    day: 'fri', name: 'Knee Deep In Miami', artists: 'Hot Since 82, Prunk, Luuk Van Dijk, Demi Riquisimo, Ronnie Spiteri',
+    day: '2026-03-27', name: 'Knee Deep In Miami', artists: 'Hot Since 82, Prunk, Luuk Van Dijk, Demi Riquisimo, Ronnie Spiteri',
     venue: 'Sagamore Hotel', area: 'Miami Beach',
     startHour: 13, timeDisplay: '1pm – 11pm', type: 'pool',
     genres: ['house', 'progressive'], priceRaw: 63, priceDisplay: '$62.76+', age: '21+',
     link: 'https://www.eventbrite.com/e/sagamore-pool-party-mmw-2026-knee-deep-in-miami-tickets-1830830436119'
   },
   {
-    day: 'fri', name: 'PNK Music Week \'26', artists: 'Product Pluto & PNK Records',
+    day: '2026-03-27', name: 'PNK Music Week \'26', artists: 'Product Pluto & PNK Records',
     venue: 'Zeyzey', area: 'Miami',
     startHour: 15, timeDisplay: '3pm – 12am', type: 'outdoor',
     genres: ['house', 'tech house', 'progressive'], priceRaw: 28, priceDisplay: '$28–$34', age: '21+',
     link: 'https://posh.vip/e/product-pluto-pnk-records-presents-pnk-music-week-26'
   },
   {
-    day: 'fri', name: 'Ultra Music Festival', artists: 'Multi-stage, various artists',
+    day: '2026-03-27', name: 'Ultra Music Festival', artists: 'Multi-stage, various artists',
     venue: 'Bayfront Park', area: 'Miami',
     startHour: 16, timeDisplay: '4pm – Sun 10pm', type: 'festival',
     genres: ['big room', 'edm', 'techno', 'house'], priceRaw: 540, priceDisplay: '$540+', age: '18+',
     link: 'https://ultramusicfestival.com/tickets/miami/'
   },
   {
-    day: 'fri', name: 'Where Are My Keys', artists: 'Ricardo Villalobos, Fumiya Tanaka, Danny Daze, tINI, Desyn, Emma, Shaun Reeves, Rakim Under',
+    day: '2026-03-27', name: 'Where Are My Keys', artists: 'Ricardo Villalobos, Fumiya Tanaka, Danny Daze, tINI, Desyn, Emma, Shaun Reeves, Rakim Under',
     venue: '94th Aero Squadron', area: 'Miami',
     startHour: 17, timeDisplay: '5pm – Sun 8am', type: 'outdoor',
     genres: ['house', 'electro', 'techno'], priceRaw: 116, priceDisplay: '$116 (3-day)', age: '21+',
     link: 'https://dice.fm/event/dkqbaq-where-are-my-keys-mmw-by-unmute-pickle-27th-mar-94th-aero-squadron-miami-tickets'
   },
   {
-    day: 'fri', name: 'Shift Miami 2026', artists: 'TBA',
+    day: '2026-03-27', name: 'Shift Miami 2026', artists: 'TBA',
     venue: '1020 Ocean Dr', area: 'Miami Beach',
     startHour: 13, timeDisplay: 'Tue–Fri (multi-day)', type: 'night',
     genres: ['house', 'tech house', 'edm'], priceRaw: 226, priceDisplay: '$226 (multi-day)', age: 'All',
     link: 'https://posh.vip/e/shift-miami-2026'
   },
   {
-    day: 'fri', name: 'House Is A Feeling', artists: 'DJ Dove, Emmaculate, Gettoblaster, Harry Romero, Lazaro Casanova, Mike Nervous, Oscar G, DJ Sneak, Stacy Kidd, Tony Touch',
+    day: '2026-03-27', name: 'House Is A Feeling', artists: 'DJ Dove, Emmaculate, Gettoblaster, Harry Romero, Lazaro Casanova, Mike Nervous, Oscar G, DJ Sneak, Stacy Kidd, Tony Touch',
     venue: '1-800-Lucky', area: 'Miami',
     startHour: 18, timeDisplay: '6pm – 4am', type: 'outdoor',
     genres: ['tech house', 'afro house', 'funky house'], priceRaw: 0, priceDisplay: 'Free', age: '21+',
     link: 'https://ra.co/events/2372578'
   },
   {
-    day: 'fri', name: 'Ministry of Sound × Hard Times', artists: 'Dennis Ferrer, Derrick Carter, Honeyluv, Fletch, Olive F, Chuck Daniels b2b Doorly',
+    day: '2026-03-27', name: 'Ministry of Sound × Hard Times', artists: 'Dennis Ferrer, Derrick Carter, Honeyluv, Fletch, Olive F, Chuck Daniels b2b Doorly',
     venue: 'Sable', area: 'Miami',
     startHour: 19, timeDisplay: '7pm – 4am', type: 'night',
     genres: ['house', 'deep house'], priceRaw: 36, priceDisplay: '$36', age: '21+',
     link: 'https://dice.fm/partner/tickets/event/oevn7a-ministry-of-sound-x-hard-times-27th-mar-sable-miami-miami-tickets'
   },
   {
-    day: 'fri', name: 'Shimza & Co', artists: 'Shimza',
+    day: '2026-03-27', name: 'Shimza & Co', artists: 'Shimza',
     venue: 'Jungle Island', area: 'Miami',
     startHour: 19, timeDisplay: '7pm – 3am', type: 'outdoor',
     genres: ['afro house', 'progressive', 'tech house'], priceRaw: 47, priceDisplay: '$47–$206', age: '21+',
     link: 'https://dice.fm/event/v3qok7-shimza-and-co-miami-music-week-27th-mar-jungle-island-miami-tickets'
   },
   {
-    day: 'fri', name: 'Babel Music Showcase', artists: 'TBA',
+    day: '2026-03-27', name: 'Babel Music Showcase', artists: 'TBA',
     venue: 'Zeyzey', area: 'Miami',
     startHour: 20, timeDisplay: '8pm', type: 'night',
     genres: ['house'], priceRaw: 0, priceDisplay: 'TBA', age: 'TBA',
     link: 'https://shotgun.live/en/events/zeyzey-babel-showcase-miami-music-week-26'
   },
   {
-    day: 'fri', name: 'Breaks Yo! MMW Edition', artists: 'Keith Mackenzie, Bebe Breaks, Gucci Bass, Endy, Tempoe, Xcessive Hypnotism',
+    day: '2026-03-27', name: 'Breaks Yo! MMW Edition', artists: 'Keith Mackenzie, Bebe Breaks, Gucci Bass, Endy, Tempoe, Xcessive Hypnotism',
     venue: 'Tacos And Tattoos', area: 'Kendall',
     startHour: 20, timeDisplay: '8pm', type: 'night',
     genres: ['breaks'], priceRaw: 0, priceDisplay: 'Free', age: '21+',
     link: 'https://www.facebook.com/events/793566962993974/'
   },
   {
-    day: 'fri', name: 'Black Book Records', artists: 'Chris Lake, Eats Everything, Gio Lucca, Jackie Hollander, Ragie Ban',
+    day: '2026-03-27', name: 'Black Book Records', artists: 'Chris Lake, Eats Everything, Gio Lucca, Jackie Hollander, Ragie Ban',
     venue: 'Toe Jam Backlot', area: 'Miami',
     startHour: 20, timeDisplay: '8pm', type: 'outdoor',
     genres: ['tech house'], priceRaw: 51, priceDisplay: '$51', age: '21+',
     link: 'https://dice.fm/event/3ow9nx-black-book-records-miami-music-week-27th-mar-toe-jam-backlot-miami-tickets'
   },
   {
-    day: 'fri', name: 'Deadmau5', artists: 'Deadmau5',
+    day: '2026-03-27', name: 'Deadmau5', artists: 'Deadmau5',
     venue: 'Toe Jam Backlot', area: 'Miami',
     startHour: 20, timeDisplay: '8pm – 4am', type: 'outdoor',
     genres: ['progressive', 'electro', 'tech house'], priceRaw: 63, priceDisplay: '$63+', age: '21+',
     link: 'https://dice.fm/event/xe2ayl-deadmau5-miami-music-week-27th-mar-toe-jam-backlot-miami-tickets'
   },
   {
-    day: 'fri', name: 'The Get Down', artists: 'DJ Icey, Jubilee, Spacemen (Live), Brothers Of Funk, Destroyers',
+    day: '2026-03-27', name: 'The Get Down', artists: 'DJ Icey, Jubilee, Spacemen (Live), Brothers Of Funk, Destroyers',
     venue: 'Kemistry', area: 'Fort Lauderdale',
     startHour: 20, timeDisplay: '8pm – 4am', type: 'night',
     genres: ['breaks', 'miami bass'], priceRaw: 53, priceDisplay: '$53', age: '18+',
     link: 'https://dice.fm/event/2wkkr7-the-get-down-27th-mar-kemistry-fort-lauderdale-tickets'
   },
   {
-    day: 'fri', name: 'Ferry Corsten + Giuseppe Ottaviani', artists: 'Ferry Corsten, Giuseppe Ottaviani',
+    day: '2026-03-27', name: 'Ferry Corsten + Giuseppe Ottaviani', artists: 'Ferry Corsten, Giuseppe Ottaviani',
     venue: 'Clutch', area: 'Miami',
     startHour: 21, timeDisplay: '9pm', type: 'night',
     genres: ['trance'], priceRaw: 24, priceDisplay: '$24–$36+', age: '18+',
     link: 'https://dice.fm/event/3owk8p-ferry-corsten-giuseppe-ottaviani-27th-mar-clutch-miami-tickets'
   },
   {
-    day: 'fri', name: 'Wrong Is Right', artists: 'Biscits, Devault, Hills, Hntr, John Carl, Lumi',
+    day: '2026-03-27', name: 'Wrong Is Right', artists: 'Biscits, Devault, Hills, Hntr, John Carl, Lumi',
     venue: 'Strawberry Moon Pool', area: 'Miami Beach',
     startHour: 21, timeDisplay: '9pm', type: 'pool',
     genres: ['tech house', 'progressive'], priceRaw: 0, priceDisplay: 'TBA', age: '21+',
     link: 'https://www.instagram.com/p/DU4Bf5ukdCM/?hl=en'
   },
   {
-    day: 'fri', name: 'Brownies & Lemonade', artists: 'TBA',
+    day: '2026-03-27', name: 'Brownies & Lemonade', artists: 'TBA',
     venue: 'Mana Wynwood', area: 'Miami',
     startHour: 21, timeDisplay: '9pm – 3am', type: 'outdoor',
     genres: ['dubstep', 'bass', 'trap', 'edm'], priceRaw: 55, priceDisplay: '$55–$77', age: '18+',
     link: 'https://www.tixr.com/groups/blnkcnvs/events/brownies-lemonade-miami-2026-174828'
   },
   {
-    day: 'fri', name: 'Ophelia Records: Seven Lions & Friends', artists: 'Seven Lions, A Hundred Drums, Andrew Bayer, Kill The Noise, Mitis',
+    day: '2026-03-27', name: 'Ophelia Records: Seven Lions & Friends', artists: 'Seven Lions, A Hundred Drums, Andrew Bayer, Kill The Noise, Mitis',
     venue: 'Midline', area: 'Miami',
     startHour: 21, timeDisplay: '9pm – 3am', type: 'night',
     genres: ['melodic dubstep', 'progressive', 'big room'], priceRaw: 43, priceDisplay: '$43–$55', age: '18+',
     link: 'https://www.eventbrite.com/e/mmw26-seven-lions-midline-miami-tickets-1980935210540'
   },
   {
-    day: 'fri', name: 'Factory Town — Friday', artists: 'Josh Baker, Prospa, Bassrush (DnB), Kettama, Paramida',
+    day: '2026-03-27', name: 'Factory Town — Friday', artists: 'Josh Baker, Prospa, Bassrush (DnB), Kettama, Paramida',
     venue: 'Factory Town', area: 'Miami',
     startHour: 21, timeDisplay: '9pm – 7am', type: 'outdoor',
     genres: ['house', 'tech house', 'techno', 'drum and bass'], priceRaw: 62, priceDisplay: '$62–$150', age: '18+',
     link: 'https://dice.fm/event/yoay3r-factory-town-music-week-2026-friday-pass-27th-mar-factory-town-miami-tickets'
   },
   {
-    day: 'fri', name: 'Mersiv', artists: 'Mersiv',
+    day: '2026-03-27', name: 'Mersiv', artists: 'Mersiv',
     venue: 'Mad Live', area: 'Miami',
     startHour: 22, timeDisplay: '10pm', type: 'night',
     genres: ['dubstep', 'bass'], priceRaw: 40, priceDisplay: '$40–$64', age: '18+',
     link: 'https://www.tixr.com/groups/blnkcnvs/events/mersiv-miami-177858'
   },
   {
-    day: 'fri', name: 'Adamn Killa', artists: 'Adamn Killa',
+    day: '2026-03-27', name: 'Adamn Killa', artists: 'Adamn Killa',
     venue: 'The Boombox', area: 'Miami',
     startHour: 22, timeDisplay: '10pm – 5am', type: 'night',
     genres: ['hip-hop'], priceRaw: 15, priceDisplay: '$15–$20', age: 'TBA',
     link: 'https://shotgun.live/en/events/adamn-killa-live'
   },
   {
-    day: 'fri', name: 'Elephante & Friends', artists: 'Elephante, Tsu Nami, Rayray, Forester, Hidden Axis, Kindred',
+    day: '2026-03-27', name: 'Elephante & Friends', artists: 'Elephante, Tsu Nami, Rayray, Forester, Hidden Axis, Kindred',
     venue: 'Mad Club Wynwood', area: 'Miami',
     startHour: 22, timeDisplay: '10pm – 5am', type: 'night',
     genres: ['trap', 'big room', 'melodic dubstep'], priceRaw: 28, priceDisplay: '$28–$40', age: '21+',
     link: 'https://www.tixr.com/groups/blnkcnvs/events/elephante-friends-miami-music-week-174146'
   },
   {
-    day: 'fri', name: 'LP Giobbi', artists: 'LP Giobbi',
+    day: '2026-03-27', name: 'LP Giobbi', artists: 'LP Giobbi',
     venue: 'Do Not Sit On The Furniture', area: 'Miami Beach',
     startHour: 22, timeDisplay: '10pm – 5am', type: 'night',
     genres: ['house'], priceRaw: 60, priceDisplay: '$60', age: '21+',
     link: 'https://dice.fm/event/6dnyd2-do-not-sit-on-mmw-lp-giobbi-27th-mar-do-not-sit-on-the-furniture-miami-beach-tickets'
   },
   {
-    day: 'fri', name: 'Stereo Annual Showcase', artists: 'TBA',
+    day: '2026-03-27', name: 'Stereo Annual Showcase', artists: 'TBA',
     venue: 'Mode Miami', area: 'Miami',
     startHour: 22, timeDisplay: '10pm – 5am', type: 'night',
     genres: ['house'], priceRaw: 20, priceDisplay: '$20', age: '21+',
     link: 'https://dice.fm/event/3oggkx-stereo-annual-showcase-mmw-2026-27th-mar-mode-miami-tickets'
   },
   {
-    day: 'fri', name: 'MMW Friday Night', artists: 'TBA',
+    day: '2026-03-27', name: 'MMW Friday Night', artists: 'TBA',
     venue: 'E11even', area: 'Miami',
     startHour: 23, timeDisplay: '11pm', type: 'night',
     genres: ['edm', 'pop edm'], priceRaw: 66, priceDisplay: '$66+', age: '21+',
     link: 'https://speakeasygo.com/event/EVE-GJYTGW'
   },
   {
-    day: 'fri', name: 'Solid Grooves', artists: 'TBA',
+    day: '2026-03-27', name: 'Solid Grooves', artists: 'TBA',
     venue: 'Club Space', area: 'Miami',
     startHour: 23, timeDisplay: '11pm', type: 'night',
     genres: ['house', 'tech house'], priceRaw: 100, priceDisplay: '$100–$252', age: '21+',
     link: 'https://dice.fm/event/92wx36-solid-grooves-miami-music-week-2026-27th-mar-club-space-miami-miami-tickets'
   },
   {
-    day: 'fri', name: 'Toman', artists: 'Toman',
+    day: '2026-03-27', name: 'Toman', artists: 'Toman',
     venue: 'Casa Neos Lounge', area: 'Miami',
     startHour: 23, timeDisplay: '11pm – 4am', type: 'night',
     genres: ['house'], priceRaw: 500, priceDisplay: '$500+', age: 'TBA',
     link: 'https://beachclub.casa-neos.com/'
   },
   {
-    day: 'fri', name: 'Get Busy v. Madafakaz', artists: 'TBA',
+    day: '2026-03-27', name: 'Get Busy v. Madafakaz', artists: 'TBA',
     venue: 'Floyd Miami', area: 'Miami',
     startHour: 23, timeDisplay: '11pm – 5am', type: 'night',
     genres: ['tech house'], priceRaw: 40, priceDisplay: '$40', age: '21+',
     link: 'https://dice.fm/event/av37vv-get-busy-v-madafakaz-miami-music-week-27th-mar-floyd-miami-miami-tickets'
   },
   {
-    day: 'fri', name: 'Black Coffee @ Liv', artists: 'Black Coffee',
+    day: '2026-03-27', name: 'Black Coffee @ Liv', artists: 'Black Coffee',
     venue: 'Liv Miami', area: 'Miami Beach',
     startHour: 23, timeDisplay: '11:30pm', type: 'night',
     genres: ['afro house', 'progressive'], priceRaw: 75, priceDisplay: '$75–$100+', age: '21+',
@@ -815,245 +863,245 @@ let events = [
 
   // ── SATURDAY MARCH 28 — ALL 33 EVENTS ────────────────────────────────────
   {
-    day: 'sat', name: 'EDMTRAIN × Radiate Takeover', artists: 'TBA',
+    day: '2026-03-28', name: 'EDMTRAIN × Radiate Takeover', artists: 'TBA',
     venue: 'Clevelander South Beach', area: 'Miami Beach',
     startHour: 11, timeDisplay: '11am – 7pm', type: 'pool',
     genres: ['edm'], priceRaw: 0, priceDisplay: 'Free w/RSVP', age: '21+',
     link: 'https://posh.vip/e/edmtrain-x-radiate-takeover'
   },
   {
-    day: 'sat', name: 'Am.Radio MMW', artists: 'TBA',
+    day: '2026-03-28', name: 'Am.Radio MMW', artists: 'TBA',
     venue: 'Zeyzey', area: 'Miami',
     startHour: 11, timeDisplay: '11am', type: 'night',
     genres: ['house'], priceRaw: 0, priceDisplay: 'TBA', age: 'TBA',
     link: 'https://shotgun.live/en/events/zeyzey-miami-music-week-am-radio-2026'
   },
   {
-    day: 'sat', name: 'Area 10 Pool Party', artists: 'MK, Armand Van Helden',
+    day: '2026-03-28', name: 'Area 10 Pool Party', artists: 'MK, Armand Van Helden',
     venue: 'Kimpton Surfcomber Hotel', area: 'Miami Beach',
     startHour: 12, timeDisplay: '12pm – 11pm', type: 'pool',
     genres: ['house', 'funky house'], priceRaw: 29, priceDisplay: '$29+', age: '21+',
     link: 'https://shotgun.live/en/events/mk-presents-area-10-pool-party'
   },
   {
-    day: 'sat', name: 'Meduza', artists: 'Meduza',
+    day: '2026-03-28', name: 'Meduza', artists: 'Meduza',
     venue: 'National Hotel', area: 'Miami Beach',
     startHour: 12, timeDisplay: '12pm – 11pm', type: 'pool',
     genres: ['house', 'tech house'], priceRaw: 47, priceDisplay: '$47–$296', age: '21+',
     link: 'https://dice.fm/event/k6a36o-meduza-the-originals-present-hiide-mmw-2026-28th-mar-national-hotel-miami-tickets'
   },
   {
-    day: 'sat', name: 'Project Mayhem Industry Social', artists: 'DJ Magic Mike, Deekline, Gucci Bass, Duncan Beatz, Rob Analyze',
+    day: '2026-03-28', name: 'Project Mayhem Industry Social', artists: 'DJ Magic Mike, Deekline, Gucci Bass, Duncan Beatz, Rob Analyze',
     venue: 'LA Diosa Taqueria', area: 'Miami Lakes',
     startHour: 12, timeDisplay: '12pm – 3am', type: 'night',
     genres: ['breaks', 'miami bass'], priceRaw: 42, priceDisplay: '$42–$47+', age: '18+',
     link: 'https://www.eventbrite.com/e/project-mayhem-industry-social-2026-tickets-1948970345769'
   },
   {
-    day: 'sat', name: 'Chus + Ceballos Pool Party', artists: 'Chus + Ceballos, Mark Knight, Technasia, Crusy, Amal Nemer',
+    day: '2026-03-28', name: 'Chus + Ceballos Pool Party', artists: 'Chus + Ceballos, Mark Knight, Technasia, Crusy, Amal Nemer',
     venue: 'Strawberry Moon Pool', area: 'Miami Beach',
     startHour: 13, timeDisplay: '1pm', type: 'pool',
     genres: ['tech house', 'progressive'], priceRaw: 0, priceDisplay: 'TBA', age: '21+',
     link: 'https://www.instagram.com/p/DUBvfzlkcLi/'
   },
   {
-    day: 'sat', name: 'Danny Tenaglia & Friends', artists: 'Danny Tenaglia, Nicole Moudaber, Jonathan Cowan, Romina Mazzini',
+    day: '2026-03-28', name: 'Danny Tenaglia & Friends', artists: 'Danny Tenaglia, Nicole Moudaber, Jonathan Cowan, Romina Mazzini',
     venue: 'Sagamore Hotel', area: 'Miami Beach',
     startHour: 13, timeDisplay: '1pm – 11pm', type: 'pool',
     genres: ['house', 'tech house', 'techno'], priceRaw: 63, priceDisplay: '$62.76+', age: '21+',
     link: 'https://www.eventbrite.com/e/sagamore-pool-party-mmw-2026-danny-tenaglia-friends-tickets-1830933554549'
   },
   {
-    day: 'sat', name: 'Spring Break Boat Trip', artists: 'TBA',
+    day: '2026-03-28', name: 'Spring Break Boat Trip', artists: 'TBA',
     venue: 'TBA (Boat)', area: 'Miami',
     startHour: 13, timeDisplay: '1pm – 6pm', type: 'cruise',
     genres: ['house'], priceRaw: 40, priceDisplay: '$40', age: '21+',
     link: 'https://ra.co/events/2347797'
   },
   {
-    day: 'sat', name: 'Louie Vega & Friends', artists: 'Louie Vega',
+    day: '2026-03-28', name: 'Louie Vega & Friends', artists: 'Louie Vega',
     venue: 'Zeyzey', area: 'Miami',
     startHour: 15, timeDisplay: '3pm', type: 'night',
     genres: ['house', 'deep house'], priceRaw: 0, priceDisplay: 'TBA', age: 'TBA',
     link: 'https://shotgun.live/en/events/zeyzey-nervousrecs-louievega-and-friends-miamimusicweek-2026'
   },
   {
-    day: 'sat', name: 'Camelphat', artists: 'Camelphat',
+    day: '2026-03-28', name: 'Camelphat', artists: 'Camelphat',
     venue: 'Casa Neos Beach Club', area: 'Miami',
     startHour: 15, timeDisplay: '3pm – 8pm', type: 'pool',
     genres: ['tech house'], priceRaw: 500, priceDisplay: '$500+', age: 'TBA',
     link: 'https://beachclub.casa-neos.com/'
   },
   {
-    day: 'sat', name: 'Cosmic Gate Sunset Cruise', artists: 'Cosmic Gate, Luccio',
+    day: '2026-03-28', name: 'Cosmic Gate Sunset Cruise', artists: 'Cosmic Gate, Luccio',
     venue: 'South Beach Lady Yacht', area: 'Miami',
     startHour: 15, timeDisplay: '3pm – 8pm', type: 'cruise',
     genres: ['trance', 'progressive', 'big room'], priceRaw: 165, priceDisplay: '$165+', age: '21+',
     link: 'https://ra.co/events/2331102'
   },
   {
-    day: 'sat', name: 'Desert Hearts Open-Air', artists: 'Mikey Lion, Lee Reynolds, Marbs',
+    day: '2026-03-28', name: 'Desert Hearts Open-Air', artists: 'Mikey Lion, Lee Reynolds, Marbs',
     venue: 'Uva Wynwood', area: 'Miami',
     startHour: 16, timeDisplay: '4pm – late', type: 'outdoor',
     genres: ['tech house', 'progressive'], priceRaw: 0, priceDisplay: 'Free b4 6pm / $12–$24', age: '21+',
     link: 'https://dice.fm/event/q27qwp-desert-hearts-open-air-miami-music-week-2026-28th-mar-uva-wynwood-miami-tickets'
   },
   {
-    day: 'sat', name: 'Anjunadeep Open Air', artists: 'Amtrac, Because of Art, Cri, Dosem b2b Hana, Eli & Fur, Eric Luttrell, Ezequiel Arias, Rezident',
+    day: '2026-03-28', name: 'Anjunadeep Open Air', artists: 'Amtrac, Because of Art, Cri, Dosem b2b Hana, Eli & Fur, Eric Luttrell, Ezequiel Arias, Rezident',
     venue: 'Wynwood Marketplace', area: 'Miami',
     startHour: 16, timeDisplay: '4pm – 3am', type: 'outdoor',
     genres: ['progressive', 'deep house', 'tech house'], priceRaw: 40, priceDisplay: '$40+', age: '18+',
     link: 'https://www.tixr.com/groups/blnkcnvs/events/anjunadeep-open-air-miami-172415'
   },
   {
-    day: 'sat', name: 'unKommon Music Week', artists: 'TBA',
+    day: '2026-03-28', name: 'unKommon Music Week', artists: 'TBA',
     venue: 'Little River Studios', area: 'Miami',
     startHour: 17, timeDisplay: '5pm', type: 'night',
     genres: ['tech house', 'big room'], priceRaw: 100, priceDisplay: '$100–$200', age: '21+',
     link: 'https://dice.fm/event/53r3ol-unkommon-music-week-2-day-pass-thurs-sat-26th-mar-little-river-studios-miami-tickets'
   },
   {
-    day: 'sat', name: 'Black Coffee at The Racetrack', artists: 'Black Coffee',
+    day: '2026-03-28', name: 'Black Coffee at The Racetrack', artists: 'Black Coffee',
     venue: 'Hialeah Park Casino', area: 'Hialeah',
     startHour: 18, timeDisplay: '6pm', type: 'outdoor',
     genres: ['progressive', 'organic house', 'afro house'], priceRaw: 85, priceDisplay: '$85–$99', age: '18+',
     link: 'https://dice.fm/event/7dpg36-black-coffee-at-the-racetrack-mmw-2026-28th-mar-club-space-miami-miami-hialeah-park-casino-hialeah-tickets'
   },
   {
-    day: 'sat', name: 'Lalaland', artists: 'Cajmere, Loco Dice, Green Velvet, Discip, Ayybo, Jkatz, Olive F, Roddy Lima',
+    day: '2026-03-28', name: 'Lalaland', artists: 'Cajmere, Loco Dice, Green Velvet, Discip, Ayybo, Jkatz, Olive F, Roddy Lima',
     venue: 'Toe Jam Backlot', area: 'Miami',
     startHour: 20, timeDisplay: '8pm', type: 'outdoor',
     genres: ['tech house', 'funky house'], priceRaw: 44, priceDisplay: '$44+', age: '21+',
     link: 'https://dice.fm/event/av3kox-lalaland-miami-music-week-28th-mar-toe-jam-backlot-miami-tickets'
   },
   {
-    day: 'sat', name: 'Mas Tiempo', artists: 'TBA (Skepta-affiliated)',
+    day: '2026-03-28', name: 'Mas Tiempo', artists: 'TBA (Skepta-affiliated)',
     venue: 'Toe Jam Backlot', area: 'Miami',
     startHour: 21, timeDisplay: '9pm', type: 'outdoor',
     genres: ['progressive', 'tech house'], priceRaw: 0, priceDisplay: 'TBA', age: 'TBA',
     link: 'https://www.instagram.com/p/DUoX-Z1DJeJ/'
   },
   {
-    day: 'sat', name: 'Gabriel & Dresden', artists: 'Gabriel & Dresden',
+    day: '2026-03-28', name: 'Gabriel & Dresden', artists: 'Gabriel & Dresden',
     venue: 'Mazuma', area: 'Miami',
     startHour: 21, timeDisplay: '9pm – 3am', type: 'night',
     genres: ['trance', 'progressive'], priceRaw: 50, priceDisplay: '$49.99–$399', age: '21+',
     link: 'https://dice.fm/event/wwl6ag-gabriel-dresden-stories-we-tell-mmw-28th-mar-mazuma-miami-tickets'
   },
   {
-    day: 'sat', name: "Gwen's Gathering", artists: 'Lady Vusumzi',
+    day: '2026-03-28', name: "Gwen's Gathering", artists: 'Lady Vusumzi',
     venue: 'TBA', area: 'Miami',
     startHour: 21, timeDisplay: '9pm – 3am', type: 'night',
     genres: ['house', 'tech house'], priceRaw: 25, priceDisplay: '$25', age: '21+',
     link: 'https://ra.co/events/2347782'
   },
   {
-    day: 'sat', name: 'Get Cranked', artists: 'TBA',
+    day: '2026-03-28', name: 'Get Cranked', artists: 'TBA',
     venue: 'Mana Wynwood', area: 'Miami',
     startHour: 21, timeDisplay: '9pm – 7am', type: 'outdoor',
     genres: ['dubstep', 'hybrid trap'], priceRaw: 64, priceDisplay: '$64+', age: '18+',
     link: 'https://www.tixr.com/groups/blnkcnvs/events/get-cranked-miami-175434'
   },
   {
-    day: 'sat', name: 'Factory Town — Saturday', artists: 'Pawsa, Ben Sterling, Drumcode, Funk Tribu, Ranger Trucco',
+    day: '2026-03-28', name: 'Factory Town — Saturday', artists: 'Pawsa, Ben Sterling, Drumcode, Funk Tribu, Ranger Trucco',
     venue: 'Factory Town', area: 'Miami',
     startHour: 21, timeDisplay: '9pm – 7am', type: 'outdoor',
     genres: ['house', 'tech house', 'techno', 'electro'], priceRaw: 62, priceDisplay: '$62–$150', age: '18+',
     link: 'https://dice.fm/event/3owk2l-factory-town-music-week-2026-saturday-pass-28th-mar-factory-town-miami-tickets'
   },
   {
-    day: 'sat', name: 'A-Trak & Friends', artists: "A-Trak (Fool's Gold)",
+    day: '2026-03-28', name: 'A-Trak & Friends', artists: "A-Trak (Fool's Gold)",
     venue: 'Zeyzey', area: 'Miami',
     startHour: 22, timeDisplay: '10pm', type: 'night',
     genres: ['house', 'hip-hop', 'trap'], priceRaw: 0, priceDisplay: 'TBA', age: 'TBA',
     link: 'https://shotgun.live/en/events/zeyzey-presents-a-trak-and-friends-miami-music-week-2026'
   },
   {
-    day: 'sat', name: 'Cristobal Pesce', artists: 'Cristobal Pesce, Ketting, Gioh Cecato',
+    day: '2026-03-28', name: 'Cristobal Pesce', artists: 'Cristobal Pesce, Ketting, Gioh Cecato',
     venue: 'Domicile', area: 'Miami',
     startHour: 22, timeDisplay: '10pm', type: 'night',
     genres: ['hard techno', 'trance', 'psytrance'], priceRaw: 25, priceDisplay: '$25–$30+', age: '18+',
     link: 'https://dice.fm/event/eo3992-cristobal-pesce-saturday-mmw-28th-mar-domicile-miami-miami-tickets'
   },
   {
-    day: 'sat', name: 'Gordo', artists: 'Gordo',
+    day: '2026-03-28', name: 'Gordo', artists: 'Gordo',
     venue: 'RC Cola', area: 'Miami',
     startHour: 22, timeDisplay: '10pm', type: 'night',
     genres: ['tech house', 'edm'], priceRaw: 70, priceDisplay: '$70–$107', age: '18+',
     link: 'https://www.tixr.com/groups/blnkcnvs/events/gordo-177535'
   },
   {
-    day: 'sat', name: 'Slapfunk × Yoyaku', artists: 'TBA',
+    day: '2026-03-28', name: 'Slapfunk × Yoyaku', artists: 'TBA',
     venue: 'Jolene Downtown', area: 'Miami',
     startHour: 22, timeDisplay: '10pm', type: 'night',
     genres: ['house', 'tech house'], priceRaw: 10, priceDisplay: '$10–$20', age: '21+',
     link: 'https://dice.fm/event/8e62vr-slapfunk-x-yoyaku-28th-mar-jolene-sound-room-miami-miami-tickets'
   },
   {
-    day: 'sat', name: 'Timmy Trumpet', artists: 'Timmy Trumpet',
+    day: '2026-03-28', name: 'Timmy Trumpet', artists: 'Timmy Trumpet',
     venue: 'Daer Nightclub', area: 'Hollywood',
     startHour: 22, timeDisplay: '10pm – 4am', type: 'night',
     genres: ['house', 'big room'], priceRaw: 37, priceDisplay: '$37+', age: '21+',
     link: 'https://www.tixr.com/groups/daernightclubsouthflorida/events/timmy-trumpet-daer-nightclub-171337'
   },
   {
-    day: 'sat', name: 'Pendulum by Steve Lawler', artists: 'Steve Lawler',
+    day: '2026-03-28', name: 'Pendulum by Steve Lawler', artists: 'Steve Lawler',
     venue: 'Mode Miami', area: 'Miami',
     startHour: 22, timeDisplay: '10pm – 5am', type: 'night',
     genres: ['tech house', 'deep house', 'techno'], priceRaw: 36, priceDisplay: '$36.37', age: 'TBA',
     link: 'https://dice.fm/event/l8bbww-pendulum-by-steve-lawler-mmw-2026-28th-mar-mode-miami-tickets'
   },
   {
-    day: 'sat', name: 'Rodriguez Jr. & Nico Morano', artists: 'Rodriguez Jr., Nico Morano',
+    day: '2026-03-28', name: 'Rodriguez Jr. & Nico Morano', artists: 'Rodriguez Jr., Nico Morano',
     venue: 'Do Not Sit On The Furniture', area: 'Miami Beach',
     startHour: 22, timeDisplay: '10pm – 5am', type: 'night',
     genres: ['deep house', 'tech house'], priceRaw: 30, priceDisplay: '$30', age: '21+',
     link: 'https://dice.fm/event/2wk6wp-do-not-sit-on-mmw-rodriguez-jr-nico-morano-28th-mar-do-not-sit-on-the-furniture-miami-beach-tickets'
   },
   {
-    day: 'sat', name: 'Valentino Khan & Friends', artists: 'Valentino Khan, DJ Susan, Marten Horger, Proppa, Okayval',
+    day: '2026-03-28', name: 'Valentino Khan & Friends', artists: 'Valentino Khan, DJ Susan, Marten Horger, Proppa, Okayval',
     venue: 'Mad Club Wynwood', area: 'Miami',
     startHour: 22, timeDisplay: '10pm – 5am', type: 'night',
     genres: ['tech house', 'bass house', 'bass'], priceRaw: 28, priceDisplay: '$28–$40', age: '21+',
     link: 'https://www.tixr.com/groups/blnkcnvs/events/valentino-khan-friends-miami-175015'
   },
   {
-    day: 'sat', name: 'MMW Saturday Night', artists: 'TBA',
+    day: '2026-03-28', name: 'MMW Saturday Night', artists: 'TBA',
     venue: 'E11even', area: 'Miami',
     startHour: 23, timeDisplay: '11pm', type: 'night',
     genres: ['edm', 'pop edm'], priceRaw: 83, priceDisplay: '$83+', age: '21+',
     link: 'https://speakeasygo.com/event/eve-s2e7fv'
   },
   {
-    day: 'sat', name: 'Mason Collective', artists: 'Mason Collective',
+    day: '2026-03-28', name: 'Mason Collective', artists: 'Mason Collective',
     venue: 'Casa Neos Lounge', area: 'Miami',
     startHour: 23, timeDisplay: '11pm – 4am', type: 'night',
     genres: ['tech house'], priceRaw: 500, priceDisplay: '$500+', age: 'TBA',
     link: 'https://beachclub.casa-neos.com/'
   },
   {
-    day: 'sat', name: 'Whynotus', artists: 'TBA',
+    day: '2026-03-28', name: 'Whynotus', artists: 'TBA',
     venue: 'The Ground @ Club Space', area: 'Miami',
     startHour: 23, timeDisplay: '11pm – 7am', type: 'night',
     genres: ['tech house', 'afro house'], priceRaw: 20, priceDisplay: '$20', age: '21+',
     link: 'https://link.dice.fm/satgroundmmw26'
   },
   {
-    day: 'sat', name: 'Marco Carola — Music On', artists: 'Marco Carola',
+    day: '2026-03-28', name: 'Marco Carola — Music On', artists: 'Marco Carola',
     venue: 'Club Space', area: 'Miami',
     startHour: 23, timeDisplay: '11pm – 8pm Sun', type: 'night',
     genres: ['techno'], priceRaw: 50, priceDisplay: '$50–$250', age: '21+',
     link: 'https://dice.fm/event/g5d6b5-marco-carola-presents-music-on-miami-music-week-2026-28th-mar-club-space-miami-miami-tickets'
   },
   {
-    day: 'sat', name: 'MMW Saturday @ Liv', artists: 'TBA',
+    day: '2026-03-28', name: 'MMW Saturday @ Liv', artists: 'TBA',
     venue: 'Liv Miami', area: 'Miami Beach',
     startHour: 23, timeDisplay: '11:30pm', type: 'night',
     genres: ['edm', 'pop edm'], priceRaw: 75, priceDisplay: '$75+', age: '21+',
     link: 'https://www.livnightclub.com/miami/event/EVE112156200020260328/miami-music-week-saturday-2026/'
   },
   {
-    day: 'sat', name: 'Riordan', artists: 'Riordan',
+    day: '2026-03-28', name: 'Riordan', artists: 'Riordan',
     venue: 'Selva', area: 'Miami',
     startHour: 23, timeDisplay: '11:30pm – 4am', type: 'night',
     genres: ['tech house', 'uk garage'], priceRaw: 75, priceDisplay: '$75+', age: '21+',
@@ -1173,17 +1221,85 @@ function matchesFilters(e) {
   return true;
 }
 
-function renderRows(day) {
-  const tbody = document.getElementById(`${day}-body`);
-  const dayEvents = events.filter(e => e.day === day);
+// ── Day display helpers ───────────────────────────────────────────────────
+function dayLabel(isoDate) {
+  const d = new Date(isoDate + 'T12:00:00');
+  const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  return `${days[d.getDay()]}, ${months[d.getMonth()]} ${d.getDate()}`;
+}
+
+function dayShortLabel(isoDate) {
+  const d = new Date(isoDate + 'T12:00:00');
+  const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  return `${days[d.getDay()]} ${d.getMonth()+1}/${d.getDate()}`;
+}
+
+function getUniqueDays() {
+  return [...new Set(events.map(e => e.day))].sort();
+}
+
+// ── Dynamic day filters + sections ────────────────────────────────────────
+function buildDayFilters() {
+  const row = document.getElementById('day-filter-row');
+  row.querySelectorAll('.filter-btn:not([data-value="all"])').forEach(b => b.remove());
+  filters.day.clear();
+  row.querySelector('[data-value="all"]').classList.add('active');
+
+  getUniqueDays().forEach(dayKey => {
+    const btn = document.createElement('button');
+    btn.className = 'filter-btn';
+    btn.dataset.filter = 'day';
+    btn.dataset.value = dayKey;
+    btn.textContent = dayShortLabel(dayKey);
+    row.appendChild(btn);
+  });
+}
+
+function buildDaySections() {
+  const container = document.getElementById('day-sections');
+  container.innerHTML = getUniqueDays().map(dayKey => `
+    <div class="day-section" id="section-${dayKey}">
+      <div class="day-header">
+        <h2>${dayLabel(dayKey)}</h2>
+        <span class="day-count" id="count-${dayKey}"></span>
+      </div>
+      <table class="event-table" id="table-${dayKey}">
+        <thead>
+          <tr>
+            <th></th>
+            <th data-col="name">Event</th>
+            <th data-col="venue">Venue</th>
+            <th data-col="time">Time</th>
+            <th data-col="type">Type</th>
+            <th data-col="genres">Genre</th>
+            <th data-col="price">Price</th>
+            <th>Link</th>
+          </tr>
+        </thead>
+        <tbody id="body-${dayKey}"></tbody>
+      </table>
+      <div class="card-list" id="cards-${dayKey}"></div>
+      <div class="no-events-msg" id="empty-${dayKey}">No events match your filters.</div>
+    </div>
+  `).join('');
+}
+
+// ── Render ─────────────────────────────────────────────────────────────────
+function renderRows(dayKey) {
+  const tbody = document.getElementById(`body-${dayKey}`);
+  const cardList = document.getElementById(`cards-${dayKey}`);
+  if (!tbody) return 0;
+  const dayEvents = events.filter(e => e.day === dayKey);
   let visible = 0;
 
+  // Table rows (desktop)
   tbody.innerHTML = dayEvents.map((e, i) => {
     const show = matchesFilters(e);
     if (show) visible++;
     const isStarred = starred.has(e);
-    return `<tr class="${show ? '' : 'hidden'}" data-idx="${day}-${i}">
-      <td><button class="star-btn ${isStarred ? 'starred' : ''}" data-day="${day}" data-i="${i}" title="Star this event">${isStarred ? '⭐' : '☆'}</button></td>
+    return `<tr class="${show ? '' : 'hidden'}" data-idx="${dayKey}-${i}">
+      <td><button class="star-btn ${isStarred ? 'starred' : ''}" data-day="${dayKey}" data-i="${i}" title="Star this event">${isStarred ? '⭐' : '☆'}</button></td>
       <td>
         <div class="event-name">${e.name}</div>
         ${e.artists ? `<div class="event-artists">${e.artists}</div>` : ''}
@@ -1202,27 +1318,62 @@ function renderRows(day) {
     </tr>`;
   }).join('');
 
-  document.getElementById(`${day}-count`).textContent = `${visible} event${visible !== 1 ? 's' : ''}`;
-  const empty = document.getElementById(`${day}-empty`);
+  // Cards (mobile) — reuse the same visible count from above
+  if (cardList) {
+    let mobileVisible = 0;
+    cardList.innerHTML = dayEvents.map((e, i) => {
+      const show = matchesFilters(e);
+      if (show) mobileVisible++;
+      const isStarred = starred.has(e);
+      return `<div class="event-card${show ? '' : ' hidden'}">
+        <div class="card-top">
+          <button class="star-btn ${isStarred ? 'starred' : ''}" data-day="${dayKey}" data-i="${i}" title="Star this event">${isStarred ? '⭐' : '☆'}</button>
+          <div class="card-info">
+            <div class="card-name">${e.name}</div>
+            ${e.artists ? `<div class="card-artists">${e.artists}</div>` : ''}
+          </div>
+          <span class="card-price ${priceClass(e.priceRaw, e.priceDisplay)}">${e.priceDisplay}</span>
+        </div>
+        <div class="card-meta">
+          <span class="card-venue">${e.venue}</span>
+          <span class="card-area">${e.area}</span>
+          <span class="card-time">${e.timeDisplay}</span>
+          ${typeTag(e.type)}
+        </div>
+        <div class="card-bottom">
+          <div class="genre-tags">${e.genres.map(genreTag).join('')}</div>
+          <a class="event-link" href="${e.link}" target="_blank" rel="noopener">→ Tickets</a>
+        </div>
+      </div>`;
+    }).join('');
+  }
+
+  document.getElementById(`count-${dayKey}`).textContent = `${visible} event${visible !== 1 ? 's' : ''}`;
+  const empty = document.getElementById(`empty-${dayKey}`);
   empty.style.display = visible === 0 ? 'block' : 'none';
   return visible;
 }
 
 function render() {
-  const fri = renderRows('fri');
-  const sat = renderRows('sat');
-  document.getElementById('resultCount').textContent = fri + sat;
+  const uniqueDays = getUniqueDays();
+  let total = 0;
 
-  // Hide day sections if filtered
-  document.getElementById('section-fri').style.display = filters.day === 'sat' ? 'none' : 'block';
-  document.getElementById('section-sat').style.display = filters.day === 'fri' ? 'none' : 'block';
+  uniqueDays.forEach(dayKey => {
+    total += renderRows(dayKey);
+    const section = document.getElementById(`section-${dayKey}`);
+    if (section) {
+      section.style.display = (filters.day.size > 0 && !filters.day.has(dayKey)) ? 'none' : 'block';
+    }
+  });
+
+  document.getElementById('resultCount').textContent = total;
 
   // Re-attach star listeners
   document.querySelectorAll('.star-btn').forEach(btn => {
-    btn.addEventListener('click', e => {
-      const day = btn.dataset.day;
+    btn.addEventListener('click', () => {
+      const dayKey = btn.dataset.day;
       const i = parseInt(btn.dataset.i);
-      const ev = events.filter(ev => ev.day === day)[i];
+      const ev = events.filter(ev => ev.day === dayKey)[i];
       if (starred.has(ev)) starred.delete(ev);
       else starred.add(ev);
       render();
@@ -1230,38 +1381,35 @@ function render() {
   });
 }
 
-// ── Filter buttons ─────────────────────────────────────────────────────────
-document.querySelectorAll('.filter-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const f = btn.dataset.filter;
-    const v = btn.dataset.value;
+// ── Filter buttons (event delegation) ─────────────────────────────────────
+document.querySelector('.filters').addEventListener('click', (e) => {
+  const btn = e.target.closest('.filter-btn');
+  if (!btn) return;
 
-    if (v === 'all') {
-      // Clear the whole group
-      filters[f].clear();
-      document.querySelectorAll(`.filter-btn[data-filter="${f}"]`).forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
+  const f = btn.dataset.filter;
+  const v = btn.dataset.value;
+
+  if (v === 'all') {
+    filters[f].clear();
+    document.querySelectorAll(`.filter-btn[data-filter="${f}"]`).forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  } else {
+    if (filters[f].has(v)) {
+      filters[f].delete(v);
+      btn.classList.remove('active');
     } else {
-      // Toggle this value
-      if (filters[f].has(v)) {
-        filters[f].delete(v);
-        btn.classList.remove('active');
-      } else {
-        filters[f].add(v);
-        btn.classList.add('active');
-      }
-      // Deactivate "All" if anything else is selected
-      const allBtn = document.querySelector(`.filter-btn[data-filter="${f}"][data-value="all"]`);
-      if (filters[f].size > 0) {
-        allBtn.classList.remove('active');
-      } else {
-        // Nothing selected — revert to "All"
-        allBtn.classList.add('active');
-      }
+      filters[f].add(v);
+      btn.classList.add('active');
     }
+    const allBtn = document.querySelector(`.filter-btn[data-filter="${f}"][data-value="all"]`);
+    if (filters[f].size > 0) {
+      allBtn.classList.remove('active');
+    } else {
+      allBtn.classList.add('active');
+    }
+  }
 
-    render();
-  });
+  render();
 });
 
 // ── Search ─────────────────────────────────────────────────────────────────
@@ -1287,9 +1435,15 @@ async function loadEvents() {
   } catch (err) {
     console.warn('Could not load events.json, using bundled data:', err.message);
   }
+  buildDayFilters();
+  buildDaySections();
   render();
 }
 
+// Build initial UI from fallback data, then attempt live load
+buildDayFilters();
+buildDaySections();
+render();
 loadEvents();
 
 // Refresh events.json every 5 minutes without reloading the page

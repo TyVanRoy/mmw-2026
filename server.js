@@ -10,7 +10,10 @@ const app = express();
 const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 const EVENTS_FILE = path.join(__dirname, 'public', 'events.json');
 const SOURCE_URL = 'https://19hz.info/eventlisting_Miami.php';
-const TARGET_DATES = ['Mar 27', 'Mar 28']; // MMW weekend
+// MMW 2026 full range: Wed Mar 18 through Wed Apr 1
+const MONTH_MAP = { Jan:0, Feb:1, Mar:2, Apr:3, May:4, Jun:5, Jul:6, Aug:7, Sep:8, Oct:9, Nov:10, Dec:11 };
+const RANGE_START = new Date(2026, 2, 18); // March 18
+const RANGE_END   = new Date(2026, 3, 1);  // April 1
 
 // ── Serve static files ─────────────────────────────────────────────────────
 app.use(express.static(path.join(__dirname, 'public')));
@@ -25,13 +28,20 @@ function parseEvents(html) {
     if (cells.length < 4) return;
 
     const dateCell = $(cells[0]).text().trim();
-    const isTarget = TARGET_DATES.some(d => dateCell.includes(d));
-    if (!isTarget) return;
 
-    // Date/time: "Fri: Mar 27  (12pm-11pm)"
+    // Extract date: "Fri: Mar 27  (12pm-11pm)" → "Mar", "27"
+    const dateMatch = dateCell.match(/(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+(\d+)/);
+    if (!dateMatch) return;
+    const eventDate = new Date(2026, MONTH_MAP[dateMatch[1]], parseInt(dateMatch[2]));
+    if (eventDate < RANGE_START || eventDate > RANGE_END) return;
+
+    // ISO date key: '2026-03-27'
+    const mm = String(eventDate.getMonth() + 1).padStart(2, '0');
+    const dd = String(eventDate.getDate()).padStart(2, '0');
+    const dayKey = `2026-${mm}-${dd}`;
+
     const timeMatch = dateCell.match(/\(([^)]+)\)/);
     const timeRaw = timeMatch ? timeMatch[1] : '';
-    const dayMatch = dateCell.match(/Mar 27/) ? 'fri' : 'sat';
 
     // Parse startHour from time string
     const startMatch = timeRaw.match(/^(\d+)(?::(\d+))?(am|pm)/i);
@@ -64,7 +74,7 @@ function parseEvents(html) {
     const priceStr = $(cells[2]).text().trim();
     const age = $(cells[3]).text().trim() || 'TBA';
 
-    raw.push({ day: dayMatch, titlePart, venue, area, genres, priceStr, age, timeRaw, startHour, link });
+    raw.push({ day: dayKey, titlePart, venue, area, genres, priceStr, age, timeRaw, startHour, link });
   });
 
   return raw;
@@ -130,7 +140,7 @@ async function refresh() {
   }
 
   const rawEvents = parseEvents(html);
-  console.log(`Parsed ${rawEvents.length} events for MMW weekend`);
+  console.log(`Parsed ${rawEvents.length} events for MMW 2026`);
 
   if (rawEvents.length === 0) {
     console.warn('No events parsed — skipping write');
@@ -166,7 +176,7 @@ async function refresh() {
 }
 
 // ── Exports for test script ─────────────────────────────────────────────────
-module.exports = { parseEvents, parsePrice, enrichWithClaude, refresh, SOURCE_URL };
+module.exports = { parseEvents, parsePrice, enrichWithClaude, refresh, SOURCE_URL, RANGE_START, RANGE_END };
 
 // ── Boot ───────────────────────────────────────────────────────────────────
 if (require.main === module) {

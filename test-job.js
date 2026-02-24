@@ -27,9 +27,10 @@ async function run() {
     return;
   }
 
-  const fri = raw.filter(e => e.day === 'fri').length;
-  const sat = raw.filter(e => e.day === 'sat').length;
-  console.log(`   Friday: ${fri}  |  Saturday: ${sat}`);
+  const dayCounts = {};
+  raw.forEach(e => { dayCounts[e.day] = (dayCounts[e.day] || 0) + 1; });
+  const dayEntries = Object.entries(dayCounts).sort(([a], [b]) => a.localeCompare(b));
+  console.log(`   By day: ${dayEntries.map(([d, n]) => `${d}: ${n}`).join('  |  ')}`);
 
   // Spot-check parse quality
   console.log('\n   Sample parsed event:');

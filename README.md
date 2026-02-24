@@ -1,6 +1,6 @@
 # MMW26 — Miami Music Week 2026 Event Tracker
 
-A live-updating event tracker for Miami Music Week (March 27–28, 2026). Scrapes [19hz.info](https://19hz.info/eventlisting_Miami.php) every 5 minutes, uses Claude to enrich the raw data, and serves a filterable single-page app.
+A live-updating event tracker for Miami Music Week (March 18 – April 1, 2026). Scrapes [19hz.info](https://19hz.info/eventlisting_Miami.php) every 5 minutes, uses Claude to enrich the raw data, and serves a filterable single-page app.
 
 ---
 
@@ -24,9 +24,9 @@ mmw26/
 ### Data Pipeline
 
 1. **Fetch** — `server.js` hits `https://19hz.info/eventlisting_Miami.php` and parses the HTML table using `cheerio`
-2. **Filter** — Only rows matching `Mar 27` or `Mar 28` are kept
+2. **Filter** — Only rows with dates in the `Mar 18 – Apr 1` range are kept
 3. **Parse** — Each row is broken into: `titlePart`, `venue`, `area`, `genres[]`, `priceStr`, `age`, `timeRaw`, `startHour`
-4. **Enrich** — The raw batch is sent to Claude (`claude-opus-4-6`) in a single API call. Claude returns a JSON array with `name` (event brand), `artists` (lineup string), and `type` (pool / outdoor / night / festival / cruise)
+4. **Enrich** — The raw batch is sent to Claude (`claude-sonnet-4-6`) in a single API call. Claude returns a JSON array with `name` (event brand), `artists` (lineup string), and `type` (pool / outdoor / night / festival / cruise)
 5. **Write** — The enriched array is written to `public/events.json` with a timestamp
 6. **Serve** — Express serves `public/` as static files. The browser fetches `/events.json` on load and every 5 minutes thereafter
 
@@ -48,7 +48,7 @@ Each event object in `events.json` has:
 
 | Field | Source | Notes |
 |---|---|---|
-| `day` | Parsed | `'fri'` or `'sat'` |
+| `day` | Parsed | ISO date string, e.g. `'2026-03-27'` |
 | `name` | Claude inferred | Event/brand name, split from artist list |
 | `artists` | Claude inferred | Full lineup as a string |
 | `venue` | Parsed | Venue name from 19hz |
@@ -80,7 +80,7 @@ The UI supports multi-select filters with OR logic within groups and AND logic a
 
 | Filter | Values |
 |---|---|
-| Day | Fri 3/27, Sat 3/28 |
+| Day | Dynamically generated from event data (Mar 18 – Apr 1) |
 | Time | Afternoon (12–6pm), Evening (6–10pm), Late Night (10pm–2am), After Hours (2am+) |
 | Type | Pool Party, Open Air, Nightclub, Festival, Cruise |
 | Genre | House, Tech House, Techno, Progressive, Deep House, Afro/Organic, Trance, Breaks, Bass/Dubstep, Drum & Bass, Big Room, EDM |
@@ -157,15 +157,16 @@ Alternatively, ask Claude to re-fetch `https://19hz.info/eventlisting_Miami.php`
 
 ## Extending the Project
 
-### Adding More Dates
+### Changing the Date Range
 
-In `server.js`, update `TARGET_DATES`:
+In `server.js`, update `RANGE_START` and `RANGE_END`:
 
 ```js
-const TARGET_DATES = ['Mar 27', 'Mar 28', 'Mar 29']; // add Sunday
+const RANGE_START = new Date(2026, 2, 15); // March 15
+const RANGE_END   = new Date(2026, 3, 5);  // April 5
 ```
 
-Also update the title and subtitle in `index.html` and add a `sun` option to the Day filter.
+The frontend generates day filter buttons and sections dynamically from the event data, so no HTML changes are needed.
 
 ### Changing the Source
 
@@ -182,7 +183,7 @@ The enrichment prompt is in `server.js` inside `enrichWithClaude()`. If `type` i
 
 ### Cost
 
-At ~80 events per run and ~claude-opus-4-6 pricing, each enrichment pass costs roughly $0.01–0.03. At 5-minute intervals over a 5-day MMW window that's around $4–12 total. Well within reason. If cost is a concern, switch to `claude-haiku-4-5-20251001` in `server.js` — the task is simple enough.
+At ~80 events per run and ~claude-sonnet-4-6 pricing, each enrichment pass costs roughly $0.01–0.03. At 5-minute intervals over the 15-day MMW window that's around $6–20 total. Well within reason. If cost is a concern, switch to `claude-haiku-4-5-20251001` in `server.js` — the task is simple enough.
 
 ---
 
