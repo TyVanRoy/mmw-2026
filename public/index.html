@@ -547,19 +547,24 @@
 
     .card-bottom {
       display: flex;
+      flex-wrap: wrap;
       align-items: flex-end;
       justify-content: space-between;
       margin-top: 10px;
-      gap: 8px;
+      gap: 6px 8px;
     }
     .card-bottom .genre-tags {
-      max-width: none;
-      flex: 1;
-      max-height: 52px;
-      overflow: hidden;
+      max-width: 100%;
+      flex: 1 1 100%;
+      gap: 4px;
+    }
+    .card-bottom .genre-tags .tag {
+      font-size: 8px;
+      padding: 2px 5px;
     }
     .card-bottom .event-link {
       flex-shrink: 0;
+      margin-left: auto;
     }
   }
 </style>
