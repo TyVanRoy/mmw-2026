@@ -545,26 +545,20 @@
       color: var(--text);
     }
 
-    .card-bottom {
+    .card-genres {
       display: flex;
       flex-wrap: wrap;
-      align-items: flex-end;
-      justify-content: space-between;
-      margin-top: 10px;
-      gap: 6px 8px;
-    }
-    .card-bottom .genre-tags {
-      max-width: 100%;
-      flex: 1 1 100%;
       gap: 4px;
+      margin-top: 8px;
     }
-    .card-bottom .genre-tags .tag {
+    .card-genres .tag {
       font-size: 8px;
       padding: 2px 5px;
     }
-    .card-bottom .event-link {
-      flex-shrink: 0;
-      margin-left: auto;
+
+    .card-bottom {
+      margin-top: 8px;
+      text-align: right;
     }
   }
 </style>
@@ -2290,8 +2284,8 @@ function renderRows(dayKey) {
           <span class="card-time">${e.timeDisplay}</span>
           ${typeTag(e.type)}
         </div>
+        ${e.genres.length ? `<div class="card-genres">${e.genres.map(genreTag).join('')}</div>` : ''}
         <div class="card-bottom">
-          <div class="genre-tags">${e.genres.map(genreTag).join('')}</div>
           <a class="event-link" href="${e.link}" target="_blank" rel="noopener">→ Tickets</a>
         </div>
       </div>`;
