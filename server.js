@@ -81,28 +81,38 @@ function parsePrice(str) {
 async function enrichWithClaude(rawEvents) {
   const prompt = `You are enriching event data for a Miami Music Week event tracker.
 
-For each event below, return a JSON array (same order) with:
-- "name": the event/show name (brand, series, or headliner — NOT the full artist list)
-- "artists": the supporting/full artist lineup as a string (empty string if none beyond the headliner)
-- "type": one of: "pool", "outdoor", "night", "festival", "cruise"
-  - pool = hotel pool party
-  - outdoor = open-air non-pool (Wynwood lot, park, beach, racetrack, island)
-  - night = indoor nightclub/venue
-  - festival = multi-stage fest (Ultra, etc.)
-  - cruise = boat event
+For each event below, return a JSON array (same order, same length) where each element has exactly these fields:
 
-Respond ONLY with a valid JSON array, no markdown, no explanation.
+- "name" (string): The event brand, series, or party name. Split this from the artist list. If the title is just an artist name with no event brand, use the artist name.
+- "artists" (string): The full artist lineup as a comma-separated string. If the name already covers the only artist, use an empty string "".
+- "type" (string): One of "pool", "outdoor", "night", "festival", "cruise"
+  - "pool" — hotel pool party (e.g. Surfcomber, Sagamore, National Hotel, Strawberry Moon)
+  - "outdoor" — open-air non-pool (Wynwood lots, parks, beaches, racetracks, islands, Factory Town)
+  - "night" — indoor nightclub or venue (Club Space, Floyd, E11even, Do Not Sit, etc.)
+  - "festival" — multi-stage festival (Ultra, etc.)
+  - "cruise" — boat/yacht event
+
+Example input:
+0: title="Black Book Records: Chris Lake, Eats Everything, Ragie Ban" venue="Toe Jam Backlot" area="Miami" genres="tech house"
+1: title="Deadmau5" venue="Toe Jam Backlot" area="Miami" genres="progressive, electro"
+
+Example output:
+[{"name":"Black Book Records","artists":"Chris Lake, Eats Everything, Ragie Ban","type":"outdoor"},{"name":"Deadmau5","artists":"","type":"outdoor"}]
+
+Respond ONLY with the raw JSON array. No markdown fences, no explanation, no trailing text.
 
 Events:
 ${rawEvents.map((e, i) => `${i}: title="${e.titlePart}" venue="${e.venue}" area="${e.area}" genres="${e.genres.join(', ')}"`).join('\n')}`;
 
   const response = await client.messages.create({
-    model: 'claude-opus-4-6',
+    model: 'claude-sonnet-4-6',
     max_tokens: 4096,
     messages: [{ role: 'user', content: prompt }],
   });
 
-  const text = response.content[0].text.trim();
+  let text = response.content[0].text.trim();
+  // Strip markdown fences if Claude wraps the JSON despite instructions
+  text = text.replace(/^```(?:json)?\s*\n?/, '').replace(/\n?```\s*$/, '');
   return JSON.parse(text);
 }
 
@@ -155,12 +165,17 @@ async function refresh() {
   console.log(`Written ${events.length} events to events.json`);
 }
 
-// ── Boot ───────────────────────────────────────────────────────────────────
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, async () => {
-  console.log(`Server running on port ${PORT}`);
+// ── Exports for test script ─────────────────────────────────────────────────
+module.exports = { parseEvents, parsePrice, enrichWithClaude, refresh, SOURCE_URL };
 
-  // Run immediately on startup, then every 5 minutes
-  await refresh();
-  cron.schedule('*/5 * * * *', refresh);
-});
+// ── Boot ───────────────────────────────────────────────────────────────────
+if (require.main === module) {
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, async () => {
+    console.log(`Server running on port ${PORT}`);
+
+    // Run immediately on startup, then every 5 minutes
+    await refresh();
+    cron.schedule('*/5 * * * *', refresh);
+  });
+}
