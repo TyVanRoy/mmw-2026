@@ -116,7 +116,7 @@ ${rawEvents.map((e, i) => `${i}: title="${e.titlePart}" venue="${e.venue}" area=
 
   const response = await client.messages.create({
     model: 'claude-sonnet-4-6',
-    max_tokens: 4096,
+    max_tokens: 16384,
     messages: [{ role: 'user', content: prompt }],
   });
 
@@ -124,6 +124,15 @@ ${rawEvents.map((e, i) => `${i}: title="${e.titlePart}" venue="${e.venue}" area=
   // Strip markdown fences if Claude wraps the JSON despite instructions
   text = text.replace(/^```(?:json)?\s*\n?/, '').replace(/\n?```\s*$/, '');
   return JSON.parse(text);
+}
+
+// ── Enrichment cache ────────────────────────────────────────────────────────
+// Keyed by "day|titlePart|venue" → { name, artists, type }
+// Persists in memory across cron cycles; lost on process restart (re-enriches once on boot).
+const enrichmentCache = new Map();
+
+function cacheKey(raw) {
+  return `${raw.day}|${raw.titlePart}|${raw.venue}`;
 }
 
 // ── Main refresh pipeline ──────────────────────────────────────────────────
@@ -147,32 +156,62 @@ async function refresh() {
     return;
   }
 
-  let enriched;
-  try {
-    enriched = await enrichWithClaude(rawEvents);
-  } catch (err) {
-    console.error('Claude enrichment failed:', err.message);
-    return;
+  // Find events not yet in the enrichment cache
+  const newEvents = rawEvents.filter(r => !enrichmentCache.has(cacheKey(r)));
+
+  if (newEvents.length > 0) {
+    console.log(`${newEvents.length} new event(s) detected — enriching with Claude...`);
+    // Batch in groups of 50 to stay within output token limits
+    const BATCH_SIZE = 50;
+    for (let i = 0; i < newEvents.length; i += BATCH_SIZE) {
+      const batch = newEvents.slice(i, i + BATCH_SIZE);
+      const batchNum = Math.floor(i / BATCH_SIZE) + 1;
+      const totalBatches = Math.ceil(newEvents.length / BATCH_SIZE);
+      if (totalBatches > 1) console.log(`  Batch ${batchNum}/${totalBatches} (${batch.length} events)`);
+      try {
+        const enriched = await enrichWithClaude(batch);
+        batch.forEach((raw, j) => {
+          enrichmentCache.set(cacheKey(raw), {
+            name: enriched[j]?.name || raw.titlePart,
+            artists: enriched[j]?.artists || '',
+            type: enriched[j]?.type || 'night',
+          });
+        });
+      } catch (err) {
+        console.error(`Claude enrichment failed (batch ${batchNum}):`, err.message);
+        batch.forEach(raw => {
+          if (!enrichmentCache.has(cacheKey(raw))) {
+            enrichmentCache.set(cacheKey(raw), { name: raw.titlePart, artists: '', type: 'night' });
+          }
+        });
+      }
+    }
+  } else {
+    console.log('No new events — skipping enrichment');
   }
 
-  const events = rawEvents.map((raw, i) => ({
-    day: raw.day,
-    name: enriched[i]?.name || raw.titlePart,
-    artists: enriched[i]?.artists || '',
-    venue: raw.venue,
-    area: raw.area,
-    startHour: raw.startHour,
-    timeDisplay: raw.timeRaw,
-    type: enriched[i]?.type || 'night',
-    genres: raw.genres,
-    priceRaw: parsePrice(raw.priceStr),
-    priceDisplay: raw.priceStr || 'TBA',
-    age: raw.age,
-    link: raw.link,
-  }));
+  // Build final events using fresh parsed data + cached enrichments
+  const events = rawEvents.map(raw => {
+    const cached = enrichmentCache.get(cacheKey(raw)) || { name: raw.titlePart, artists: '', type: 'night' };
+    return {
+      day: raw.day,
+      name: cached.name,
+      artists: cached.artists,
+      venue: raw.venue,
+      area: raw.area,
+      startHour: raw.startHour,
+      timeDisplay: raw.timeRaw,
+      type: cached.type,
+      genres: raw.genres,
+      priceRaw: parsePrice(raw.priceStr),
+      priceDisplay: raw.priceStr || 'TBA',
+      age: raw.age,
+      link: raw.link,
+    };
+  });
 
   fs.writeFileSync(EVENTS_FILE, JSON.stringify({ updatedAt: new Date().toISOString(), events }, null, 2));
-  console.log(`Written ${events.length} events to events.json`);
+  console.log(`Written ${events.length} events to events.json (cache: ${enrichmentCache.size} entries)`);
 }
 
 // ── Exports for test script ─────────────────────────────────────────────────
