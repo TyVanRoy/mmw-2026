@@ -55,24 +55,28 @@ function parseEvents(html) {
       if (meridiem === 'am' && startHour >= 1 && startHour <= 6) startHour += 24;
     }
 
-    // Event cell: "Title @ Venue (Area) genre, genre"
+    // Event cell: "Title @ Venue (Area)"
     const eventCell = $(cells[1]).text().trim();
     const link = $(cells[1]).find('a').first().attr('href') || '';
 
-    // Split on @ to get title+artists vs venue+area+genres
+    // Split on @ to get title+artists vs venue+area
     const atIdx = eventCell.indexOf(' @ ');
     const titlePart = atIdx > -1 ? eventCell.slice(0, atIdx).trim() : eventCell;
 
     let venuePart = atIdx > -1 ? eventCell.slice(atIdx + 3) : '';
-    // Venue part: "Venue Name (Area) genre, genre"
-    const venueAreaMatch = venuePart.match(/^(.+?)\s*\(([^)]+)\)\s*(.*)/);
+    const venueAreaMatch = venuePart.match(/^(.+?)\s*\(([^)]+)\)/);
     const venue = venueAreaMatch ? venueAreaMatch[1].trim() : venuePart.trim();
     const area = venueAreaMatch ? venueAreaMatch[2].trim() : '';
-    const genreStr = venueAreaMatch ? venueAreaMatch[3].trim() : '';
+
+    // Genres are in their own column (col 2)
+    const genreStr = $(cells[2]).text().trim();
     const genres = genreStr ? genreStr.split(',').map(g => g.trim().toLowerCase()).filter(Boolean) : [];
 
-    const priceStr = $(cells[2]).text().trim();
-    const age = $(cells[3]).text().trim() || 'TBA';
+    // Price and age are combined in col 3, separated by "|"
+    const priceAgeStr = $(cells[3]).text().trim();
+    const pipeIdx = priceAgeStr.indexOf('|');
+    const priceStr = pipeIdx > -1 ? priceAgeStr.slice(0, pipeIdx).trim() : priceAgeStr;
+    const age = pipeIdx > -1 ? priceAgeStr.slice(pipeIdx + 1).trim() : 'TBA';
 
     raw.push({ day: dayKey, titlePart, venue, area, genres, priceStr, age, timeRaw, startHour, link });
   });
@@ -140,7 +144,7 @@ function cacheKey(raw) {
 try {
   const data = JSON.parse(fs.readFileSync(CACHE_FILE, 'utf8'));
   Object.entries(data).forEach(([k, v]) => enrichmentCache.set(k, v));
-  console.log(`Loaded enrichment cache: ${enrichmentCache.size} entries`);
+  console.error(`Loaded enrichment cache: ${enrichmentCache.size} entries`);
 } catch (_) {
   // No cache file yet — will enrich on first run
 }
