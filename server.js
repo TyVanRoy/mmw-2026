@@ -128,11 +128,26 @@ ${rawEvents.map((e, i) => `${i}: title="${e.titlePart}" venue="${e.venue}" area=
 
 // ── Enrichment cache ────────────────────────────────────────────────────────
 // Keyed by "day|titlePart|venue" → { name, artists, type }
-// Persists in memory across cron cycles; lost on process restart (re-enriches once on boot).
+// Persisted to disk so deploys don't re-enrich.
+const CACHE_FILE = path.join(__dirname, 'enrichment-cache.json');
 const enrichmentCache = new Map();
 
 function cacheKey(raw) {
   return `${raw.day}|${raw.titlePart}|${raw.venue}`;
+}
+
+// Load cache from disk on startup
+try {
+  const data = JSON.parse(fs.readFileSync(CACHE_FILE, 'utf8'));
+  Object.entries(data).forEach(([k, v]) => enrichmentCache.set(k, v));
+  console.log(`Loaded enrichment cache: ${enrichmentCache.size} entries`);
+} catch (_) {
+  // No cache file yet — will enrich on first run
+}
+
+function saveCache() {
+  const obj = Object.fromEntries(enrichmentCache);
+  fs.writeFileSync(CACHE_FILE, JSON.stringify(obj, null, 2));
 }
 
 // ── Main refresh pipeline ──────────────────────────────────────────────────
@@ -186,6 +201,7 @@ async function refresh() {
         });
       }
     }
+    saveCache();
   } else {
     console.log('No new events — skipping enrichment');
   }

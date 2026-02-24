@@ -597,6 +597,14 @@
       <button class="filter-btn" data-filter="time" data-value="afterhours">After Hours (2am+)</button>
     </div>
     <div class="filter-row">
+      <span class="filter-label">Area</span>
+      <button class="filter-btn active" data-filter="area" data-value="all">All</button>
+      <button class="filter-btn" data-filter="area" data-value="miami">Miami</button>
+      <button class="filter-btn" data-filter="area" data-value="miami beach">Miami Beach</button>
+      <button class="filter-btn" data-filter="area" data-value="fort lauderdale">Ft. Lauderdale</button>
+      <button class="filter-btn" data-filter="area" data-value="other">Other</button>
+    </div>
+    <div class="filter-row">
       <span class="filter-label">Type</span>
       <button class="filter-btn active" data-filter="type" data-value="all">All</button>
       <button class="filter-btn" data-filter="type" data-value="pool">Pool Party</button>
@@ -2034,6 +2042,7 @@ let events = [
 const filters = {
   day:     new Set(),
   time:    new Set(),
+  area:    new Set(),
   type:    new Set(),
   genre:   new Set(),
   price:   new Set(),
@@ -2091,6 +2100,22 @@ function matchesFilters(e) {
       (filters.time.has('evening')    && isEvening)    ||
       (filters.time.has('latenight')  && isLateNight)  ||
       (filters.time.has('afterhours') && isAfterHours);
+    if (!pass) return false;
+  }
+
+  // Area — OR logic with aliases
+  if (filters.area.size > 0) {
+    const areaLower = e.area.toLowerCase();
+    const areaAliases = {
+      'miami':           a => a === 'miami',
+      'miami beach':     a => a === 'miami beach',
+      'fort lauderdale':  a => a === 'fort lauderdale' || a === 'ft. lauderdale',
+      'other':           a => a !== 'miami' && a !== 'miami beach' && a !== 'fort lauderdale' && a !== 'ft. lauderdale',
+    };
+    const pass = [...filters.area].some(selected => {
+      const test = areaAliases[selected];
+      return test && test(areaLower);
+    });
     if (!pass) return false;
   }
 

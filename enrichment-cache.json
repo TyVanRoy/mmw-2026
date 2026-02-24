@@ -1,0 +1,977 @@
+{
+  "2026-03-18|Wild Wednesdays|Tin Roof": {
+    "name": "Wild Wednesdays",
+    "artists": "",
+    "type": "night"
+  },
+  "2026-03-18|Noize MC|Sport Of Kings": {
+    "name": "Noize MC",
+    "artists": "",
+    "type": "outdoor"
+  },
+  "2026-03-18|Kamal Bankay|E11even": {
+    "name": "Kamal Bankay",
+    "artists": "",
+    "type": "night"
+  },
+  "2026-03-18|Odd Mob|Backyard": {
+    "name": "Odd Mob",
+    "artists": "",
+    "type": "outdoor"
+  },
+  "2026-03-18|Twinsick and Kyle Cooke|Liv Nightclub": {
+    "name": "Twinsick and Kyle Cooke",
+    "artists": "",
+    "type": "night"
+  },
+  "2026-03-19|Okeechobee Music & Arts Festival|Sunshine Grove": {
+    "name": "Okeechobee Music & Arts Festival",
+    "artists": "",
+    "type": "festival"
+  },
+  "2026-03-19|Thirsty Thursdays|Tin Roof": {
+    "name": "Thirsty Thursdays",
+    "artists": "",
+    "type": "night"
+  },
+  "2026-03-19|MC4d|E11even": {
+    "name": "MC4d",
+    "artists": "",
+    "type": "night"
+  },
+  "2026-03-19|Rakim|Midline": {
+    "name": "Rakim",
+    "artists": "",
+    "type": "night"
+  },
+  "2026-03-19|King's Paradox: Vito Uk, Jesse Calosso, Stigmaz|Jolene Downtown": {
+    "name": "King's Paradox",
+    "artists": "Vito Uk, Jesse Calosso, Stigmaz",
+    "type": "night"
+  },
+  "2026-03-20|Surround Project: Acopia + Purelink|The Ground At Club Space": {
+    "name": "Surround Project",
+    "artists": "Acopia, Purelink",
+    "type": "night"
+  },
+  "2026-03-20|Hntr|Daer Nightclub": {
+    "name": "Hntr",
+    "artists": "",
+    "type": "night"
+  },
+  "2026-03-20|Raw Main, baez|Do Not Sit On The Furniture": {
+    "name": "Raw Main, baez",
+    "artists": "Raw Main, baez",
+    "type": "night"
+  },
+  "2026-03-20|E11even Miami|E11even": {
+    "name": "E11even Miami",
+    "artists": "",
+    "type": "night"
+  },
+  "2026-03-20|Yamagucci|Floyd Miami": {
+    "name": "Yamagucci",
+    "artists": "",
+    "type": "night"
+  },
+  "2026-03-20|Music On: Marco Carola, Franky Rizardo, East End Dubs + More|Club Space": {
+    "name": "Music On",
+    "artists": "Marco Carola, Franky Rizardo, East End Dubs",
+    "type": "night"
+  },
+  "2026-03-21|Made In Miami: Oscar G + Friends|National Hotel": {
+    "name": "Made In Miami",
+    "artists": "Oscar G",
+    "type": "pool"
+  },
+  "2026-03-21|Andrea Oliva|Casa Neos Beach Club": {
+    "name": "Andrea Oliva",
+    "artists": "",
+    "type": "outdoor"
+  },
+  "2026-03-21|Xandra|Palm Tree Club": {
+    "name": "Xandra",
+    "artists": "",
+    "type": "outdoor"
+  },
+  "2026-03-21|Ear|The Boombox": {
+    "name": "Ear",
+    "artists": "",
+    "type": "night"
+  },
+  "2026-03-21|Ali Farahani b2b Shan Nash|Do Not Sit On The Furniture": {
+    "name": "Ali Farahani b2b Shan Nash",
+    "artists": "",
+    "type": "night"
+  },
+  "2026-03-21|Express Lane Records|1306 North Miami Avenue": {
+    "name": "Express Lane Records",
+    "artists": "",
+    "type": "outdoor"
+  },
+  "2026-03-21|Hernan Cattaneo b2b Nick Warren|Club Space": {
+    "name": "Hernan Cattaneo b2b Nick Warren",
+    "artists": "",
+    "type": "night"
+  },
+  "2026-03-21|D.O.D.|Liv Nightclub": {
+    "name": "D.O.D.",
+    "artists": "",
+    "type": "night"
+  },
+  "2026-03-21|Kaluki Takeover: wAFF, Sante Sansone, Matt's Experiment, Ms. Mada|Floyd Miami": {
+    "name": "Kaluki Takeover",
+    "artists": "wAFF, Sante Sansone, Matt's Experiment, Ms. Mada",
+    "type": "night"
+  },
+  "2026-03-22|Benny Benassi|Palm Tree Club": {
+    "name": "Benny Benassi",
+    "artists": "",
+    "type": "outdoor"
+  },
+  "2026-03-22|Roger Sanchez|Casa Neos Beach Club": {
+    "name": "Roger Sanchez",
+    "artists": "",
+    "type": "outdoor"
+  },
+  "2026-03-22|Kybba|Wynwood Marketplace": {
+    "name": "Kybba",
+    "artists": "",
+    "type": "outdoor"
+  },
+  "2026-03-22|Sendy Sundays|Tin Roof": {
+    "name": "Sendy Sundays",
+    "artists": "",
+    "type": "night"
+  },
+  "2026-03-22|Joe Maz|E11even": {
+    "name": "Joe Maz",
+    "artists": "",
+    "type": "night"
+  },
+  "2026-03-23|Mardi Gras Mondays|Tin Roof": {
+    "name": "Mardi Gras Mondays",
+    "artists": "",
+    "type": "night"
+  },
+  "2026-03-24|Mood Child: Manda Moor and Sirus Hood - Pool Party|Kimpton Epic Hotel": {
+    "name": "Mood Child",
+    "artists": "Manda Moor, Sirus Hood",
+    "type": "pool"
+  },
+  "2026-03-24|Shift Miami 2026|1020 Ocean Dr": {
+    "name": "Shift Miami 2026",
+    "artists": "",
+    "type": "outdoor"
+  },
+  "2026-03-24|Beatport Live Pool Party X Mood Child: DJ Sneak, Manda Moor, Sirus Hood, Jean Pierre, Ms. Mada|Kimpton Epic Hotel": {
+    "name": "Beatport Live Pool Party X Mood Child",
+    "artists": "DJ Sneak, Manda Moor, Sirus Hood, Jean Pierre, Ms. Mada",
+    "type": "pool"
+  },
+  "2026-03-24|Monrroe + Sustance|Mazuma": {
+    "name": "Monrroe + Sustance",
+    "artists": "Monrroe, Sustance",
+    "type": "night"
+  },
+  "2026-03-24|Get Closer: Luuk van Dijk, Elliot Schooling, Liam Palmer, Laidlaw, Natalia Roth, Simone De Kunovich|Jolene Downtown": {
+    "name": "Get Closer",
+    "artists": "Luuk van Dijk, Elliot Schooling, Liam Palmer, Laidlaw, Natalia Roth, Simone De Kunovich",
+    "type": "night"
+  },
+  "2026-03-24|Mmw Space Pass 2026|Club Space": {
+    "name": "Mmw Space Pass 2026",
+    "artists": "",
+    "type": "night"
+  },
+  "2026-03-24|Experts Only: Miami Music Week 2026|Club Space": {
+    "name": "Experts Only: Miami Music Week 2026",
+    "artists": "",
+    "type": "night"
+  },
+  "2026-03-25|SPLASH Revolution Pool Party: Tony Zuccaro, Romi Lux, Gianni Petrarca, Jude & Frank, GT_Ofice, Bonnie x Clyde|Moxy South Beach": {
+    "name": "SPLASH Revolution Pool Party",
+    "artists": "Tony Zuccaro, Romi Lux, Gianni Petrarca, Jude & Frank, GT_Ofice, Bonnie x Clyde",
+    "type": "pool"
+  },
+  "2026-03-25|Luciano, Miguelle & Tons, Toman, Saraga, Miluhska, Mendoza B2B Noel|Kimpton Surfcomber Hotel": {
+    "name": "Luciano, Miguelle & Tons, Toman, Saraga, Miluhska, Mendoza B2B Noel",
+    "artists": "Luciano, Miguelle & Tons, Toman, Saraga, Miluhska, Mendoza, Noel",
+    "type": "pool"
+  },
+  "2026-03-25|TGTHR Pool Parties: All Week Pass|Kimpton Surfcomber Hotel": {
+    "name": "TGTHR Pool Parties: All Week Pass",
+    "artists": "",
+    "type": "pool"
+  },
+  "2026-03-25|20 Years Rekids: Danny Tenaglia, Radio Slave, DJ Minx, Doc Martin, Tal Fussman, Anja Schneider, William Kiss - Pool Party|Kimpton Epic Hotel": {
+    "name": "20 Years Rekids",
+    "artists": "Danny Tenaglia, Radio Slave, DJ Minx, Doc Martin, Tal Fussman, Anja Schneider, William Kiss",
+    "type": "pool"
+  },
+  "2026-03-25|Cloonee - Sagamore Pool Party w/Ben Sterling, Gio Elia, Obsknr, OMAR+, SalomT Le Chat|Sagamore Hotel": {
+    "name": "Cloonee - Sagamore Pool Party",
+    "artists": "Cloonee, Ben Sterling, Gio Elia, Obsknr, OMAR+, SalomT Le Chat",
+    "type": "pool"
+  },
+  "2026-03-25|Balance Miami: Lucas Zarate, Niki Sadeki, Ezequiel Arias, Guy J, Guy Mantzur|1-800-Lucky": {
+    "name": "Balance Miami",
+    "artists": "Lucas Zarate, Niki Sadeki, Ezequiel Arias, Guy J, Guy Mantzur",
+    "type": "night"
+  },
+  "2026-03-25|Wild Wednesdays|Tin Roof": {
+    "name": "Wild Wednesdays",
+    "artists": "",
+    "type": "night"
+  },
+  "2026-03-25|R Party: Bonnie X Clyde, Caleb Calloway, Edx, Frank Walker, Gt_Ofice, Jackie Hollander, Kastra, Lucas & Steve, Vassy|Moxy South Beach Rooftop": {
+    "name": "R Party",
+    "artists": "Bonnie X Clyde, Caleb Calloway, Edx, Frank Walker, Gt_Ofice, Jackie Hollander, Kastra, Lucas & Steve, Vassy",
+    "type": "outdoor"
+  },
+  "2026-03-25|Alan Nieves, RozalesD, Ramyen, nate chapman, SVP, George Smeddles|3201 Buena Vista Blvd": {
+    "name": "Alan Nieves, RozalesD, Ramyen, nate chapman, SVP, George Smeddles",
+    "artists": "Alan Nieves, RozalesD, Ramyen, nate chapman, SVP, George Smeddles",
+    "type": "outdoor"
+  },
+  "2026-03-25|Oliver Heldens|E11even": {
+    "name": "Oliver Heldens",
+    "artists": "",
+    "type": "night"
+  },
+  "2026-03-25|Tokimonsta: Young Art Records|Zeyzey": {
+    "name": "Tokimonsta: Young Art Records",
+    "artists": "Tokimonsta",
+    "type": "night"
+  },
+  "2026-03-25|Coldharbour Night|Mazuma": {
+    "name": "Coldharbour Night",
+    "artists": "",
+    "type": "night"
+  },
+  "2026-03-25|Apex 2026 MMW Pass|Mazuma": {
+    "name": "Apex 2026 MMW Pass",
+    "artists": "",
+    "type": "night"
+  },
+  "2026-03-25|Incorrect Music Showcase|Mode": {
+    "name": "Incorrect Music Showcase",
+    "artists": "",
+    "type": "night"
+  },
+  "2026-03-25|Madota, Jessy Nimni|Do Not Sit On The Furniture": {
+    "name": "Madota, Jessy Nimni",
+    "artists": "Madota, Jessy Nimni",
+    "type": "night"
+  },
+  "2026-03-25|Prodigy Artist: Emorfik, Luke Alexander, Okayval, Rommii, Tesh|Mad Club Wynwood": {
+    "name": "Prodigy Artist",
+    "artists": "Emorfik, Luke Alexander, Okayval, Rommii, Tesh",
+    "type": "night"
+  },
+  "2026-03-25|Trifecta Records Label Showcase: Tomi & Kesh, Joe Vanditti, Eddy M, Misha, M.O.E, Beck VM, Valvee, Herrera|Mita": {
+    "name": "Trifecta Records Label Showcase",
+    "artists": "Tomi & Kesh, Joe Vanditti, Eddy M, Misha, M.O.E, Beck VM, Valvee, Herrera",
+    "type": "night"
+  },
+  "2026-03-25|Justice / Max Dean b2b Luke Dean: Nexup / Unreal ft Cloudy, Kuko, Novah / Layton Giordani: Madminds / Define Everything Future|Factory Town": {
+    "name": "Justice / Max Dean b2b Luke Dean: Nexup / Unreal ft Cloudy, Kuko, Novah / Layton Giordani: Madminds / Define Everything Future",
+    "artists": "Justice, Max Dean, Luke Dean, Cloudy, Kuko, Novah, Layton Giordani",
+    "type": "outdoor"
+  },
+  "2026-03-25|Factory Town Music Week 2026 (5-Day Pass)|Factory Town": {
+    "name": "Factory Town Music Week 2026 (5-Day Pass)",
+    "artists": "",
+    "type": "outdoor"
+  },
+  "2026-03-25|Miami Music Week Wednesday Night|E11even": {
+    "name": "Miami Music Week Wednesday Night",
+    "artists": "",
+    "type": "night"
+  },
+  "2026-03-25|Riordan Selects|Floyd": {
+    "name": "Riordan Selects",
+    "artists": "Riordan",
+    "type": "night"
+  },
+  "2026-03-25|Six Sex - Miami Music Week|The Ground At Club Space": {
+    "name": "Six Sex - Miami Music Week",
+    "artists": "",
+    "type": "night"
+  },
+  "2026-03-25|Hugel's Make The Girls Dance: Miami Music Week 2026|Club Space": {
+    "name": "Hugel's Make The Girls Dance",
+    "artists": "Hugel",
+    "type": "night"
+  },
+  "2026-03-25|Carlita, Lp Giobbi|Liv Miami": {
+    "name": "Carlita, Lp Giobbi",
+    "artists": "Carlita, Lp Giobbi",
+    "type": "night"
+  },
+  "2026-03-26|Aliens On Mushrooms Pool Party: Gettoblaster, DJ Sneak, Harvard Bass, Hatiras, Jesse Perez, Roland Clark, Vampire Sex, Tiedye, AMPRS&ND, Casmalia, Clayton William, GOLES, MICVH, Techno Tupac, AMP, Charles Meyer, Devon James, DJ Stellar, DIPZY, Dom Brown, Fuzz Worth, Hunter Reid, Keith Christopher, Lavelle Dupree, Sartorius, Scotty Boy, Tony H, Uriah G, Val Verra|Moxy South Beach": {
+    "name": "Aliens On Mushrooms Pool Party",
+    "artists": "Gettoblaster, DJ Sneak, Harvard Bass, Hatiras, Jesse Perez, Roland Clark, Vampire Sex, Tiedye, AMPRS&ND, Casmalia, Clayton William, GOLES, MICVH, Techno Tupac, AMP, Charles Meyer, Devon James, DJ Stellar, DIPZY, Dom Brown, Fuzz Worth, Hunter Reid, Keith Christopher, Lavelle Dupree, Sartorius, Scotty Boy, Tony H, Uriah G, Val Verra",
+    "type": "pool"
+  },
+  "2026-03-26|Stmpd Rcrds|Kimpton Surfcomber Hotel": {
+    "name": "Stmpd Rcrds",
+    "artists": "",
+    "type": "pool"
+  },
+  "2026-03-26|The Originals Present Hiide|National Hotel": {
+    "name": "The Originals Present Hiide",
+    "artists": "Hiide",
+    "type": "pool"
+  },
+  "2026-03-26|Brunchcast Mmw|Uva Uva": {
+    "name": "Brunchcast Mmw",
+    "artists": "",
+    "type": "night"
+  },
+  "2026-03-26|Hot Creations x TSZR - Beatport Live Pool Party|Kimpton Epic Hotel": {
+    "name": "Hot Creations x TSZR - Beatport Live Pool Party",
+    "artists": "",
+    "type": "pool"
+  },
+  "2026-03-26|Defected Miami: Sagamore Pool Party w/Andrea Oliva, Honeyluv, Kellie Allen, Ms. Mada, Nic Fanciulli, Olive F|Sagamore Hotel": {
+    "name": "Defected Miami",
+    "artists": "Andrea Oliva, Honeyluv, Kellie Allen, Ms. Mada, Nic Fanciulli, Olive F",
+    "type": "pool"
+  },
+  "2026-03-26|Raw Cuts: DJ Tennis, Gerd Janson, Mai Iachetti, Bakke|Reserve Padel Watson Island - 1000 MacArthur Causeway": {
+    "name": "Raw Cuts",
+    "artists": "DJ Tennis, Gerd Janson, Mai Iachetti, Bakke",
+    "type": "outdoor"
+  },
+  "2026-03-26|Toolroom Miami Open Air: Cassimm, Chus & Ceballos, Crusy, Essel, Hatiras, Illyus Barrientos, James Hurr, Lovra, Marco Lys, Mark Knight, Martin Ikin, Noizu, Tita Lau, Tony Romero, Who|Wynwood Marketplace": {
+    "name": "Toolroom Miami Open Air",
+    "artists": "Cassimm, Chus & Ceballos, Crusy, Essel, Hatiras, Illyus Barrientos, James Hurr, Lovra, Marco Lys, Mark Knight, Martin Ikin, Noizu, Tita Lau, Tony Romero, Who",
+    "type": "outdoor"
+  },
+  "2026-03-26|Bedrock Sunset Cruise|Hyatt Regency Dock": {
+    "name": "Bedrock Sunset Cruise",
+    "artists": "",
+    "type": "cruise"
+  },
+  "2026-03-26|Thirsty Thursdays|Tin Roof": {
+    "name": "Thirsty Thursdays",
+    "artists": "",
+    "type": "night"
+  },
+  "2026-03-26|Never Get Out of the Boat w Hernan Cattaneo b2b Nick Warren|South Beach Lady Yacht": {
+    "name": "Never Get Out of the Boat",
+    "artists": "Hernan Cattaneo, Nick Warren",
+    "type": "cruise"
+  },
+  "2026-03-26|Nora En Pure Presents Purified Miami|Jungle Island": {
+    "name": "Nora En Pure Presents Purified Miami",
+    "artists": "Nora En Pure",
+    "type": "outdoor"
+  },
+  "2026-03-26|Kazbah Showcase|Zeyzey": {
+    "name": "Kazbah Showcase",
+    "artists": "",
+    "type": "night"
+  },
+  "2026-03-26|Pardon My French: A-Trak, Chuwe, Dillon Francis, Flosstradamus, Frosttop, Flowdan, Remk, Troyboi|Toe Jam XL": {
+    "name": "Pardon My French",
+    "artists": "A-Trak, Chuwe, Dillon Francis, Flosstradamus, Frosttop, Flowdan, Remk, Troyboi",
+    "type": "outdoor"
+  },
+  "2026-03-26|Ultra Nate's Deep Sugar Miami ''Ultra's Birthday Bash!'' w/Soul Clap, Rissa Garcia|The Triangle At Little River": {
+    "name": "Ultra Nate's Deep Sugar Miami",
+    "artists": "Ultra Nate, Soul Clap, Rissa Garcia",
+    "type": "outdoor"
+  },
+  "2026-03-26|Gorgon City Presents: Enter The Realm w/SG Lewis, Azzecca, Silva Bumpa, Jackie Hollander|Toe Jam Backlot": {
+    "name": "Gorgon City Presents: Enter The Realm",
+    "artists": "Gorgon City, SG Lewis, Azzecca, Silva Bumpa, Jackie Hollander",
+    "type": "outdoor"
+  },
+  "2026-03-26|4B, Good Times Ahead, Uniiqu3, Craze, Stevie G, Ricky Remedy|Uva Wynwood": {
+    "name": "4B, Good Times Ahead, Uniiqu3, Craze, Stevie G, Ricky Remedy",
+    "artists": "4B, Good Times Ahead, Uniiqu3, Craze, Stevie G, Ricky Remedy",
+    "type": "outdoor"
+  },
+  "2026-03-26|Deadbeats - 10 Year Anniversary: Zeds Dead b2b Tape B, Lyny, Boogie T, Mary Droppinz b2b Sippy, Kill Safari, Casey Club b2b Neumonic, Aych b2b Overeazy|Mana Wynwood": {
+    "name": "Deadbeats - 10 Year Anniversary",
+    "artists": "Zeds Dead, Tape B, Lyny, Boogie T, Mary Droppinz, Sippy, Kill Safari, Casey Club, Neumonic, Aych, Overeazy",
+    "type": "outdoor"
+  },
+  "2026-03-26|Cosmic Gate|LA Otra": {
+    "name": "Cosmic Gate",
+    "artists": "Cosmic Gate",
+    "type": "night"
+  },
+  "2026-03-26|Infected Mushroom + John 00 Fleming|Mazuma": {
+    "name": "Infected Mushroom + John 00 Fleming",
+    "artists": "Infected Mushroom, John 00 Fleming",
+    "type": "night"
+  },
+  "2026-03-26|Bass Jamz: Gaskin|Jolene Downtown": {
+    "name": "Bass Jamz",
+    "artists": "Gaskin",
+    "type": "night"
+  },
+  "2026-03-26|Shy Fx|Kemistry": {
+    "name": "Shy Fx",
+    "artists": "Shy Fx",
+    "type": "night"
+  },
+  "2026-03-26|Audien: Progressive House Never Dies w/Justin Mylo, Telykast, Lucas & Steve b2b Mike Williams|Midline": {
+    "name": "Audien: Progressive House Never Dies",
+    "artists": "Audien, Justin Mylo, Telykast, Lucas & Steve, Mike Williams",
+    "type": "night"
+  },
+  "2026-03-26|Farris Wheel Showcase: Andino, Casmalia, Crusy, Gene Farris, Lovra, Offaiah, Shiba San, Tony Romera, Wenzday|Mode": {
+    "name": "Farris Wheel Showcase",
+    "artists": "Andino, Casmalia, Crusy, Gene Farris, Lovra, Offaiah, Shiba San, Tony Romera, Wenzday",
+    "type": "night"
+  },
+  "2026-03-26|Mira & Tal Fussman|Do Not Sit On The Furniture": {
+    "name": "Mira & Tal Fussman",
+    "artists": "Mira, Tal Fussman",
+    "type": "night"
+  },
+  "2026-03-26|Trace Amounts: Westend, Devault, Fallon, Dave Summer, Snooko, Zack Darza|Mad Club Wynwood": {
+    "name": "Trace Amounts",
+    "artists": "Westend, Devault, Fallon, Dave Summer, Snooko, Zack Darza",
+    "type": "night"
+  },
+  "2026-03-26|Jamie Jones: Paradise / Meduza & James Hype: Our House / Face 2 Face ft Adrian Mills, Serafina, Fumi / Home Grxwn / Cole Knight: Knight Club|Factory Town": {
+    "name": "Jamie Jones: Paradise / Meduza & James Hype: Our House / Face 2 Face ft Adrian Mills, Serafina, Fumi / Home Grxwn / Cole Knight: Knight Club",
+    "artists": "Jamie Jones, Meduza, James Hype, Adrian Mills, Serafina, Fumi, Cole Knight",
+    "type": "outdoor"
+  },
+  "2026-03-26|Miami Music Week Thursday Night|E11even": {
+    "name": "Miami Music Week Thursday Night",
+    "artists": "",
+    "type": "night"
+  },
+  "2026-03-26|unKommon Music Week: Hugel & Friends|Little River Studios": {
+    "name": "unKommon Music Week: Hugel & Friends",
+    "artists": "Hugel",
+    "type": "night"
+  },
+  "2026-03-26|Adam Ten|Casa Neos Lounge": {
+    "name": "Adam Ten",
+    "artists": "Adam Ten",
+    "type": "night"
+  },
+  "2026-03-26|Gdb Records: NO STATIC, Millero, Gabss, AYYBO, Ragie Ban|Floyd Miami": {
+    "name": "Gdb Records",
+    "artists": "NO STATIC, Millero, Gabss, AYYBO, Ragie Ban",
+    "type": "night"
+  },
+  "2026-03-26|Interplanetary Criminal + Main Phase|The Ground": {
+    "name": "Interplanetary Criminal + Main Phase",
+    "artists": "Interplanetary Criminal, Main Phase",
+    "type": "night"
+  },
+  "2026-03-26|Hellbent: Cloonee, Camelphat b2b Adam Ten, Luuk Van Dijk b2b LP Rhythm, Obskur, Cole Terrazas|Club Space": {
+    "name": "Hellbent",
+    "artists": "Cloonee, Camelphat, Adam Ten, Luuk Van Dijk, LP Rhythm, Obskur, Cole Terrazas",
+    "type": "night"
+  },
+  "2026-03-26|Pawsa|Liv Miami": {
+    "name": "Pawsa",
+    "artists": "Pawsa",
+    "type": "night"
+  },
+  "2026-03-26|Nic Fanciulli|Selva": {
+    "name": "Nic Fanciulli",
+    "artists": "Nic Fanciulli",
+    "type": "night"
+  },
+  "2026-03-27|Franky Rizardo, Mason Collective, Frank Storm, Grace Arribas, Amal Nemer|Kimpton Surfcomber Hotel": {
+    "name": "Franky Rizardo, Mason Collective, Frank Storm, Grace Arribas, Amal Nemer",
+    "artists": "Franky Rizardo, Mason Collective, Frank Storm, Grace Arribas, Amal Nemer",
+    "type": "pool"
+  },
+  "2026-03-27|Hugel & Friends|National Hotel": {
+    "name": "Hugel & Friends",
+    "artists": "Hugel",
+    "type": "pool"
+  },
+  "2026-03-27|Secret Headliner & Franky Rizardo|Kimpton Surfcomber Hotel": {
+    "name": "Secret Headliner & Franky Rizardo",
+    "artists": "",
+    "type": "pool"
+  },
+  "2026-03-27|Knee Deep In Miami: Sagamore Pool Party w/Hot Since 82, Prunk, Luuk Van Dijk, Demi Riquisimo, Mai Iachetti, Ronnie Spiteri|Sagamore Hotel": {
+    "name": "Knee Deep In Miami",
+    "artists": "Hot Since 82, Prunk, Luuk Van Dijk, Demi Riquisimo, Mai Iachetti, Ronnie Spiteri",
+    "type": "pool"
+  },
+  "2026-03-27|Pnk Music Week '26|Zeyzey": {
+    "name": "Pnk Music Week '26",
+    "artists": "",
+    "type": "night"
+  },
+  "2026-03-27|Ultra Music Festival|Bayfront Park": {
+    "name": "Ultra Music Festival",
+    "artists": "",
+    "type": "festival"
+  },
+  "2026-03-27|Where Are My Keys: Adam Collins, Danny Daze, Desyn, Emma, Ferny, Fumiya Tanaka, Gio Elia, Ika, Mayell, Ohm Hourani, Rakim Under, Ricardo Villalobos, Shaun Reeves, Terence Tabeau, tINI|94th Aero Squadron": {
+    "name": "Where Are My Keys",
+    "artists": "Adam Collins, Danny Daze, Desyn, Emma, Ferny, Fumiya Tanaka, Gio Elia, Ika, Mayell, Ohm Hourani, Rakim Under, Ricardo Villalobos, Shaun Reeves, Terence Tabeau, tINI",
+    "type": "outdoor"
+  },
+  "2026-03-27|House Is A Feeling: DJ Dove, Emmaculate, Gettoblaster, Harry Romero , Lazaro Casanova , Mike Nervous , Oscar G, DJ Sneak , Stacy Kidd, Tony Touch|1-800-Lucky": {
+    "name": "House Is A Feeling",
+    "artists": "DJ Dove, Emmaculate, Gettoblaster, Harry Romero, Lazaro Casanova, Mike Nervous, Oscar G, DJ Sneak, Stacy Kidd, Tony Touch",
+    "type": "night"
+  },
+  "2026-03-27|Shimza and Co|Jungle Island": {
+    "name": "Shimza and Co",
+    "artists": "",
+    "type": "outdoor"
+  },
+  "2026-03-27|Dennis Ferrer, Derrick Carter, Honeyluv, Fletch, Olive F, Chuck Daniels b2b Doorly, Disturada, Tony Deep Disco, Jake Mercer, Foz, Travis Casa|Sable": {
+    "name": "Dennis Ferrer, Derrick Carter, Honeyluv, Fletch, Olive F, Chuck Daniels b2b Doorly, Disturada, Tony Deep Disco, Jake Mercer, Foz, Travis Casa",
+    "artists": "",
+    "type": "night"
+  },
+  "2026-03-27|Breaks Yo! Keith Mackenzie, Bebe Breaks, Gucci Bass, Endy, Tempoe, Xcessive Hypnotism, Rob Analyze, dBCooper, Topher, Lady, Sum1, Dwhite|Tacos And Tattoos": {
+    "name": "Breaks Yo!",
+    "artists": "Keith Mackenzie, Bebe Breaks, Gucci Bass, Endy, Tempoe, Xcessive Hypnotism, Rob Analyze, dBCooper, Topher, Lady, Sum1, Dwhite",
+    "type": "night"
+  },
+  "2026-03-27|Chris Lake, Eats Everything, Gio Lucca, Jackie Hollander, Marco Lys, Marco Strous, Mph, Ragie Ban|Toe Jam backlot": {
+    "name": "Chris Lake, Eats Everything, Gio Lucca, Jackie Hollander, Marco Lys, Marco Strous, Mph, Ragie Ban",
+    "artists": "",
+    "type": "outdoor"
+  },
+  "2026-03-27|Babel Music Showcase|Zeyzey": {
+    "name": "Babel Music Showcase",
+    "artists": "",
+    "type": "night"
+  },
+  "2026-03-27|Deadmau5|Toe Jam Backlot": {
+    "name": "Deadmau5",
+    "artists": "",
+    "type": "outdoor"
+  },
+  "2026-03-27|The Get Down: DJ Icey, Spacemen (Live), Jubilee, Yo Speed, Brothers Of Funk, Destroyers, J-Break, Kuad Sound System (Hydraulix + Merlyn), Bboyroy, Bobbybuzz, Essential Freaks, Geishaz (Medley, Laura D, Meuax), Hicue, James Wolfe, Nhance, Robotic, Sel.6, Si-Dog, Soltek, Alexx In Chainss, Jrok B2B Spark-D, Neighborhood Rhythm, Nori, Otto|Kemistry": {
+    "name": "The Get Down",
+    "artists": "DJ Icey, Spacemen (Live), Jubilee, Yo Speed, Brothers Of Funk, Destroyers, J-Break, Kuad Sound System (Hydraulix + Merlyn), Bboyroy, Bobbybuzz, Essential Freaks, Geishaz (Medley, Laura D, Meuax), Hicue, James Wolfe, Nhance, Robotic, Sel.6, Si-Dog, Soltek, Alexx In Chainss, Jrok B2B Spark-D, Neighborhood Rhythm, Nori, Otto",
+    "type": "night"
+  },
+  "2026-03-27|Ferry Corsten + Giuseppe Ottaviani|Clutch": {
+    "name": "Ferry Corsten + Giuseppe Ottaviani",
+    "artists": "",
+    "type": "night"
+  },
+  "2026-03-27|Wrong Is Right: Biscits, Devault, Hills, Hntr, John Carl, Lumi|Strawberry Moon Pool": {
+    "name": "Wrong Is Right",
+    "artists": "Biscits, Devault, Hills, Hntr, John Carl, Lumi",
+    "type": "pool"
+  },
+  "2026-03-27|Brownies & Lemonade|Mana Wynwood": {
+    "name": "Brownies & Lemonade",
+    "artists": "",
+    "type": "outdoor"
+  },
+  "2026-03-27|Ophelia Records Showcase: Seven Lions, A Hundred Drums, Andrew Bayer, Kill The Noise, Mitis, Quackson, Star Seed|Midline": {
+    "name": "Ophelia Records Showcase",
+    "artists": "Seven Lions, A Hundred Drums, Andrew Bayer, Kill The Noise, Mitis, Quackson, Star Seed",
+    "type": "night"
+  },
+  "2026-03-27|Josh Baker: You & Me / Prospa: Prophecy / Bassrush: Drum and Bass Sessions / Kettama: Steel City Dance Discs / Paramida: Love on the Rocks|Factory Town": {
+    "name": "Josh Baker: You & Me / Prospa: Prophecy / Bassrush: Drum and Bass Sessions / Kettama: Steel City Dance Discs / Paramida: Love on the Rocks",
+    "artists": "Josh Baker, Prospa, Kettama, Paramida",
+    "type": "outdoor"
+  },
+  "2026-03-27|Mersiv|Mad Live": {
+    "name": "Mersiv",
+    "artists": "",
+    "type": "night"
+  },
+  "2026-03-27|Adamn Killa|The Boombox": {
+    "name": "Adamn Killa",
+    "artists": "",
+    "type": "night"
+  },
+  "2026-03-27|Elephante & Friends : Tsu Nami, Rayray, Forester, Hidden Axis, Kindred|Mad Club Wynwood": {
+    "name": "Elephante & Friends",
+    "artists": "Tsu Nami, Rayray, Forester, Hidden Axis, Kindred",
+    "type": "night"
+  },
+  "2026-03-27|Lp Giobbi|Do Not Sit On The Furniture": {
+    "name": "Lp Giobbi",
+    "artists": "",
+    "type": "night"
+  },
+  "2026-03-27|Stereo Annual Showcase|Mode": {
+    "name": "Stereo Annual Showcase",
+    "artists": "",
+    "type": "night"
+  },
+  "2026-03-27|Miami Music Week Friday Night|E11even": {
+    "name": "Miami Music Week Friday Night",
+    "artists": "",
+    "type": "night"
+  },
+  "2026-03-27|Solid Grooves|Club Space": {
+    "name": "Solid Grooves",
+    "artists": "",
+    "type": "night"
+  },
+  "2026-03-27|Toman|Casa Neos Lounge": {
+    "name": "Toman",
+    "artists": "",
+    "type": "night"
+  },
+  "2026-03-27|Get Busy V. Madafakaz|Floyd Miami": {
+    "name": "Get Busy V. Madafakaz",
+    "artists": "",
+    "type": "night"
+  },
+  "2026-03-27|Black Coffee|Liv Nightclub": {
+    "name": "Black Coffee",
+    "artists": "",
+    "type": "night"
+  },
+  "2026-03-27|MMW Friday|Liv Miami": {
+    "name": "MMW Friday",
+    "artists": "",
+    "type": "night"
+  },
+  "2026-03-28|Am.Radio MMW|Zeyzey": {
+    "name": "Am.Radio MMW",
+    "artists": "",
+    "type": "night"
+  },
+  "2026-03-28|Edmtrain X Radiate Takeover!|Clevelander South Beach": {
+    "name": "Edmtrain X Radiate Takeover!",
+    "artists": "",
+    "type": "pool"
+  },
+  "2026-03-28|Area 10 Pool Party: MK, Armand Van Helden|Kimpton Surfcomber Hotel": {
+    "name": "Area 10 Pool Party",
+    "artists": "MK, Armand Van Helden",
+    "type": "pool"
+  },
+  "2026-03-28|Meduza: The Originals Present Hiide - Luciano, Genesi, Chelina Manuhutu, Tini Gessler, Joe Vanditti, Bassel Darwish, Bfoxx, Above Ground, Joseph Ross, Russo|National Hotel": {
+    "name": "Meduza: The Originals Present Hiide",
+    "artists": "Luciano, Genesi, Chelina Manuhutu, Tini Gessler, Joe Vanditti, Bassel Darwish, Bfoxx, Above Ground, Joseph Ross, Russo",
+    "type": "pool"
+  },
+  "2026-03-28|Project Mayhem Industry Social 2026: DJ Magic Mike, Deekline, Mizzo, Gn (G$Montana & Neuroziz), Analog Hustlers, N!Kita, Wutam, Afghan Headspin, Missjoy, Gucci Bass, DJ Genesis, Gruv42, Rob Analyze, Akai Seven (Kj Of K5 & DJ Joey C), Tooltime, Slug, Amber Jane, Bradley Drop, Mike Presley, Slip187, Shenanigoons ( Sir1 & Stacy Mcclure), Duncan Beatz, Heiress, Von Trap, Eartight, DJ Trapper, Dominik Audio, Prato, Brook B, Karmic Waves, Zone, Gruvgirl, Ryan Blake, Swagkerr, Orien Quest|LA Diosa Taqueria": {
+    "name": "Project Mayhem Industry Social 2026",
+    "artists": "DJ Magic Mike, Deekline, Mizzo, Gn (G$Montana & Neuroziz), Analog Hustlers, N!Kita, Wutam, Afghan Headspin, Missjoy, Gucci Bass, DJ Genesis, Gruv42, Rob Analyze, Akai Seven (Kj Of K5 & DJ Joey C), Tooltime, Slug, Amber Jane, Bradley Drop, Mike Presley, Slip187, Shenanigoons ( Sir1 & Stacy Mcclure), Duncan Beatz, Heiress, Von Trap, Eartight, DJ Trapper, Dominik Audio, Prato, Brook B, Karmic Waves, Zone, Gruvgirl, Ryan Blake, Swagkerr, Orien Quest",
+    "type": "night"
+  },
+  "2026-03-28|Chus + Ceballos Pool Party w/Mark Knight, Technasia, Crusy, Amal Nemer, Oscar de Rivera|The Pool at Strawberry moon": {
+    "name": "Chus + Ceballos Pool Party",
+    "artists": "Mark Knight, Technasia, Crusy, Amal Nemer, Oscar de Rivera",
+    "type": "pool"
+  },
+  "2026-03-28|Danny Tenaglia, Nicole Moudaber, Jonathan Cowan, Romina Mazzini|Sagamore Hotel": {
+    "name": "Danny Tenaglia, Nicole Moudaber, Jonathan Cowan, Romina Mazzini",
+    "artists": "",
+    "type": "pool"
+  },
+  "2026-03-28|Spring Break Boat Trips|TBA": {
+    "name": "Spring Break Boat Trips",
+    "artists": "",
+    "type": "cruise"
+  },
+  "2026-03-28|Louie Vega and Friends|Zeyzey": {
+    "name": "Louie Vega and Friends",
+    "artists": "",
+    "type": "night"
+  },
+  "2026-03-28|Camelphat|Casa Neos Beach Club": {
+    "name": "Camelphat",
+    "artists": "",
+    "type": "night"
+  },
+  "2026-03-28|Cosmic Gate, Luccio - Sunset Cruise|South Beach Lady Yacht": {
+    "name": "Cosmic Gate, Luccio - Sunset Cruise",
+    "artists": "Cosmic Gate, Luccio",
+    "type": "cruise"
+  },
+  "2026-03-28|Desert Hearts Open-Air - Mikey Lion, Lee Reynolds, Marbs|Uva Wynwood": {
+    "name": "Desert Hearts Open-Air",
+    "artists": "Mikey Lion, Lee Reynolds, Marbs",
+    "type": "outdoor"
+  },
+  "2026-03-28|Anjunadeep Open Air Miami: Amtrac, Because of Art, Cri, Dosem b2b Hana, Eli & Fur, Eric Luttrell, Ezequiel Arias, Rezident|Wynwood Marketplace": {
+    "name": "Anjunadeep Open Air Miami",
+    "artists": "Amtrac, Because of Art, Cri, Dosem b2b Hana, Eli & Fur, Eric Luttrell, Ezequiel Arias, Rezident",
+    "type": "outdoor"
+  },
+  "2026-03-28|unKommon Music Week|Little River Studios": {
+    "name": "unKommon Music Week",
+    "artists": "",
+    "type": "night"
+  },
+  "2026-03-28|Black Coffee at The Racetrack|Hialeah Park Casino": {
+    "name": "Black Coffee at The Racetrack",
+    "artists": "Black Coffee",
+    "type": "outdoor"
+  },
+  "2026-03-28|Lalaland: Jkatz, Cajmere, Olive F, Roddy Lima, Discip, Ayybo, Loco Dice, Green Velvet|Toe Jam Backlot": {
+    "name": "Lalaland",
+    "artists": "Jkatz, Cajmere, Olive F, Roddy Lima, Discip, Ayybo, Loco Dice, Green Velvet",
+    "type": "outdoor"
+  },
+  "2026-03-28|Mas Tiempo|Toe Jam Backlot": {
+    "name": "Mas Tiempo",
+    "artists": "",
+    "type": "outdoor"
+  },
+  "2026-03-28|Gabriel & Dresden - Stories We Tell|Mazuma": {
+    "name": "Gabriel & Dresden - Stories We Tell",
+    "artists": "Gabriel & Dresden",
+    "type": "night"
+  },
+  "2026-03-28|Gwen's Gathering: lady Vusumzi|TBA": {
+    "name": "Gwen's Gathering",
+    "artists": "lady Vusumzi",
+    "type": "night"
+  },
+  "2026-03-28|Get Cranked|Mana Wynwood": {
+    "name": "Get Cranked",
+    "artists": "",
+    "type": "outdoor"
+  },
+  "2026-03-28|Pawsa / Ben Sterling: Planet X / Drumcode / Funk Tribu & Friends / Ranger Trucco: Range|Factory Town": {
+    "name": "Pawsa / Ben Sterling: Planet X / Drumcode / Funk Tribu & Friends / Ranger Trucco: Range",
+    "artists": "Pawsa, Ben Sterling, Ranger Trucco",
+    "type": "outdoor"
+  },
+  "2026-03-28|A-Trak & Friends|Zeyzey": {
+    "name": "A-Trak & Friends",
+    "artists": "A-Trak",
+    "type": "night"
+  },
+  "2026-03-28|Cristobal Pesce, Ketting, Gioh Cecato, Jay Toledo, Lara Klart|Domicile": {
+    "name": "Cristobal Pesce, Ketting, Gioh Cecato, Jay Toledo, Lara Klart",
+    "artists": "Cristobal Pesce, Ketting, Gioh Cecato, Jay Toledo, Lara Klart",
+    "type": "night"
+  },
+  "2026-03-28|Gordo|RC Cola": {
+    "name": "Gordo",
+    "artists": "",
+    "type": "outdoor"
+  },
+  "2026-03-28|Slapfunk x Yoyaku|Jolene Downtown": {
+    "name": "Slapfunk x Yoyaku",
+    "artists": "",
+    "type": "night"
+  },
+  "2026-03-28|Timmy Trumpet|Daer Nightclub": {
+    "name": "Timmy Trumpet",
+    "artists": "",
+    "type": "night"
+  },
+  "2026-03-28|Pendulum By Steve Lawler (Mmw 2026)|Mode": {
+    "name": "Pendulum",
+    "artists": "Steve Lawler",
+    "type": "night"
+  },
+  "2026-03-28|Rodriguez Jr. & Nico Morano|Do Not Sit On The Furniture": {
+    "name": "Rodriguez Jr. & Nico Morano",
+    "artists": "Rodriguez Jr., Nico Morano",
+    "type": "night"
+  },
+  "2026-03-28|Valentino Khan & Friends: DJ Susan, Marten Horger, Proppa, Okayval|Mad Club Wynwood": {
+    "name": "Valentino Khan & Friends",
+    "artists": "DJ Susan, Marten Horger, Proppa, Okayval, Valentino Khan",
+    "type": "outdoor"
+  },
+  "2026-03-28|Miami Music Week Saturday Night|E11even": {
+    "name": "Miami Music Week Saturday Night",
+    "artists": "",
+    "type": "night"
+  },
+  "2026-03-28|Mason Collective|Casa Neos Lounge": {
+    "name": "Mason Collective",
+    "artists": "",
+    "type": "night"
+  },
+  "2026-03-28|Whynotus|The Ground At Club Space": {
+    "name": "Whynotus",
+    "artists": "",
+    "type": "night"
+  },
+  "2026-03-28|Marco Carola Presents Music On|Club Space": {
+    "name": "Music On",
+    "artists": "Marco Carola",
+    "type": "night"
+  },
+  "2026-03-28|MMW Saturday|Liv Miami": {
+    "name": "MMW Saturday",
+    "artists": "",
+    "type": "night"
+  },
+  "2026-03-28|Riordan|Selva": {
+    "name": "Riordan",
+    "artists": "",
+    "type": "night"
+  },
+  "2026-03-29|Lpn! Miami Music Week|El Palenque": {
+    "name": "LPN! Miami Music Week",
+    "artists": "",
+    "type": "night"
+  },
+  "2026-03-29|K-pop Demon Ravers|Zeyzey": {
+    "name": "K-pop Demon Ravers",
+    "artists": "",
+    "type": "night"
+  },
+  "2026-03-29|Claptone: The Masquerade|Kimpton Surfcomber Hotel": {
+    "name": "Claptone: The Masquerade",
+    "artists": "Claptone",
+    "type": "pool"
+  },
+  "2026-03-29|James Hype -The Originals Present Hiide|National Hotel": {
+    "name": "Hiide",
+    "artists": "James Hype",
+    "type": "pool"
+  },
+  "2026-03-29|Mixmag Caribbean Vs Humans Alike Showcase: Chinonegro, Classmatic, Dhuna, enzo fazz, Freddy Bello, Jay de Lys, KY William, Monty Kiddo, Richy Ahmed, Technasia|1-800-Lucky": {
+    "name": "Mixmag Caribbean Vs Humans Alike Showcase",
+    "artists": "Chinonegro, Classmatic, Dhuna, Enzo Fazz, Freddy Bello, Jay de Lys, KY William, Monty Kiddo, Richy Ahmed, Technasia",
+    "type": "night"
+  },
+  "2026-03-29|Danny Tenaglia & Friends|Sagamore Hotel": {
+    "name": "Danny Tenaglia & Friends",
+    "artists": "Danny Tenaglia",
+    "type": "pool"
+  },
+  "2026-03-29|Glitterbox: Aline Rocha, Derrick Carter, Gerd Janson, Natasha Diggs, Skream (disco set), The Brothers Macklovitch, Yasmin|The Sagamore Hotel": {
+    "name": "Glitterbox",
+    "artists": "Aline Rocha, Derrick Carter, Gerd Janson, Natasha Diggs, Skream, The Brothers Macklovitch, Yasmin",
+    "type": "pool"
+  },
+  "2026-03-29|System Pool Party: Oscar P, Buck Rodgers + Friends, Jesse Chavarin, Nutritious, Kahnti, Steven V, Ryan, Keith M, Love Ammo|Greystone": {
+    "name": "System Pool Party",
+    "artists": "Oscar P, Buck Rodgers, Jesse Chavarin, Nutritious, Kahnti, Steven V, Ryan, Keith M, Love Ammo",
+    "type": "pool"
+  },
+  "2026-03-29|Luciano|Casa Neos Beach Club": {
+    "name": "Luciano",
+    "artists": "",
+    "type": "night"
+  },
+  "2026-03-29|Sendy Sundays|Tin Roof": {
+    "name": "Sendy Sundays",
+    "artists": "",
+    "type": "night"
+  },
+  "2026-03-29|Playgrnd Series: Spring Fever Edition|Zeyzey": {
+    "name": "Playgrnd Series: Spring Fever Edition",
+    "artists": "",
+    "type": "night"
+  },
+  "2026-03-29|Breaks Yo! 8-Bit w/ Keith Mackenzie, Bebe Breaks, Duncan Beatz, Tooltime, Heiress, Dominic Audiophile, Neffertiti, Cru Dawg|Tenth Level Tavern": {
+    "name": "Breaks Yo! 8-Bit",
+    "artists": "Keith Mackenzie, Bebe Breaks, Duncan Beatz, Tooltime, Heiress, Dominic Audiophile, Neffertiti, Cru Dawg",
+    "type": "night"
+  },
+  "2026-03-29|Moblack, Francis Mercier, Luna Mar, Caiiro, Ape Drums, Avo b2b Sparrow|Toe Jam Backlot": {
+    "name": "Moblack, Francis Mercier, Luna Mar, Caiiro, Ape Drums, Avo b2b Sparrow",
+    "artists": "Moblack, Francis Mercier, Luna Mar, Caiiro, Ape Drums, Avo, Sparrow",
+    "type": "outdoor"
+  },
+  "2026-03-29|Anotr, Waae|Bagatelle": {
+    "name": "Anotr, Waae",
+    "artists": "Anotr, Waae",
+    "type": "night"
+  },
+  "2026-03-29|Cristoph, Dirty South, Jeremy Olander, Dimuth K, Michael Anthony|Mazuma": {
+    "name": "Cristoph, Dirty South, Jeremy Olander, Dimuth K, Michael Anthony",
+    "artists": "Cristoph, Dirty South, Jeremy Olander, Dimuth K, Michael Anthony",
+    "type": "night"
+  },
+  "2026-03-29|Guy J & Mariano Mellino|Mad Club Wynwood": {
+    "name": "Guy J & Mariano Mellino",
+    "artists": "Guy J, Mariano Mellino",
+    "type": "outdoor"
+  },
+  "2026-03-29|Outro|Mana Wynwood": {
+    "name": "Outro",
+    "artists": "",
+    "type": "outdoor"
+  },
+  "2026-03-29|Elrow: Ilario Alicante, Jay de Lys b2b Olive F, LP Giobbi, Emjie, Matroda, Patrick Topping, Nikita Green, Sonny Fodera, Tini GEssler / I Hate Models, Indira Maganotto, Nico Moreno / Insomniac Records / Max Styler: Nu Moda / Chasewest: Chaste|Factory Town": {
+    "name": "Elrow",
+    "artists": "Ilario Alicante, Jay de Lys b2b Olive F, LP Giobbi, Emjie, Matroda, Patrick Topping, Nikita Green, Sonny Fodera, Tini Gessler, I Hate Models, Indira Maganotto, Nico Moreno, Max Styler, Chasewest",
+    "type": "outdoor"
+  },
+  "2026-03-29|AC Slater & Friends: Enzo Is Burning, Esse, Will Clarke|Mad Club Wynwood": {
+    "name": "AC Slater & Friends",
+    "artists": "Enzo Is Burning, Esse, Will Clarke, AC Slater",
+    "type": "outdoor"
+  },
+  "2026-03-29|Holy Miami|RC Cola Plant": {
+    "name": "Holy Miami",
+    "artists": "",
+    "type": "outdoor"
+  },
+  "2026-03-29|Swimming Paul|Midline": {
+    "name": "Swimming Paul",
+    "artists": "",
+    "type": "night"
+  },
+  "2026-03-29|Heavy House Society ft Sidney Charles|Jolene Downtown": {
+    "name": "Heavy House Society",
+    "artists": "Sidney Charles",
+    "type": "night"
+  },
+  "2026-03-29|Anjunabeats: Amy Wiles, Genix, Grum, Leena Punks, Mat Zo|Mad Live": {
+    "name": "Anjunabeats",
+    "artists": "Amy Wiles, Genix, Grum, Leena Punks, Mat Zo",
+    "type": "night"
+  },
+  "2026-03-29|Deeperfect Showcase ft Stefano Noferini|Mode": {
+    "name": "Deeperfect Showcase",
+    "artists": "Stefano Noferini",
+    "type": "night"
+  },
+  "2026-03-29|Miami Music Week Sunday Night|E11even": {
+    "name": "Miami Music Week Sunday Night",
+    "artists": "",
+    "type": "night"
+  },
+  "2026-03-29|Piv x Factory 93|Floyd Miami": {
+    "name": "Piv x Factory 93",
+    "artists": "",
+    "type": "night"
+  },
+  "2026-03-29|Miguelle & Tons|Casa Neos Lounge": {
+    "name": "Miguelle & Tons",
+    "artists": "Miguelle, Tons",
+    "type": "night"
+  },
+  "2026-03-29|Closing Party 2026|Club Space": {
+    "name": "Closing Party 2026",
+    "artists": "",
+    "type": "night"
+  },
+  "2026-03-29|MMW Sunday|Liv Miami": {
+    "name": "MMW Sunday",
+    "artists": "",
+    "type": "night"
+  },
+  "2026-03-30|Mardi Gras Mondays|Tin Roof": {
+    "name": "Mardi Gras Mondays",
+    "artists": "",
+    "type": "night"
+  },
+  "2026-04-01|Wild Wednesdays|Tin Roof": {
+    "name": "Wild Wednesdays",
+    "artists": "",
+    "type": "night"
+  },
+  "2026-04-01|Cx|E11even": {
+    "name": "Cx",
+    "artists": "",
+    "type": "night"
+  }
+}
