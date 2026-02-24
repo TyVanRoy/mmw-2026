@@ -547,7 +547,7 @@
 
     .card-bottom {
       display: flex;
-      align-items: center;
+      align-items: flex-end;
       justify-content: space-between;
       margin-top: 10px;
       gap: 8px;
@@ -555,6 +555,11 @@
     .card-bottom .genre-tags {
       max-width: none;
       flex: 1;
+      max-height: 52px;
+      overflow: hidden;
+    }
+    .card-bottom .event-link {
+      flex-shrink: 0;
     }
   }
 </style>
