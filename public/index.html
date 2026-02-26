@@ -2048,7 +2048,9 @@ const filters = {
   price:   new Set(),
   starred: new Set(),
 };
-const starred = new Set();
+function starKey(e) { return e.day + '|' + e.name + '|' + e.venue; }
+const starred = new Set(JSON.parse(localStorage.getItem('mmw-starred') || '[]'));
+function saveStarred() { localStorage.setItem('mmw-starred', JSON.stringify([...starred])); }
 let searchQuery = '';
 
 // ── Render ─────────────────────────────────────────────────────────────────
@@ -2154,7 +2156,7 @@ function matchesFilters(e) {
   }
 
   // Starred
-  if (filters.starred.has('starred') && !starred.has(e)) return false;
+  if (filters.starred.has('starred') && !starred.has(starKey(e))) return false;
 
   // Search
   if (searchQuery) {
@@ -2242,7 +2244,7 @@ function renderRows(dayKey) {
   tbody.innerHTML = dayEvents.map((e, i) => {
     const show = matchesFilters(e);
     if (show) visible++;
-    const isStarred = starred.has(e);
+    const isStarred = starred.has(starKey(e));
     return `<tr class="${show ? '' : 'hidden'}" data-idx="${dayKey}-${i}">
       <td><button class="star-btn ${isStarred ? 'starred' : ''}" data-day="${dayKey}" data-i="${i}" title="Star this event">${isStarred ? '⭐' : '☆'}</button></td>
       <td>
@@ -2269,7 +2271,7 @@ function renderRows(dayKey) {
     cardList.innerHTML = dayEvents.map((e, i) => {
       const show = matchesFilters(e);
       if (show) mobileVisible++;
-      const isStarred = starred.has(e);
+      const isStarred = starred.has(starKey(e));
       return `<div class="event-card${show ? '' : ' hidden'}">
         <div class="card-top">
           <button class="star-btn ${isStarred ? 'starred' : ''}" data-day="${dayKey}" data-i="${i}" title="Star this event">${isStarred ? '⭐' : '☆'}</button>
@@ -2319,8 +2321,10 @@ function render() {
       const dayKey = btn.dataset.day;
       const i = parseInt(btn.dataset.i);
       const ev = events.filter(ev => ev.day === dayKey)[i];
-      if (starred.has(ev)) starred.delete(ev);
-      else starred.add(ev);
+      const key = starKey(ev);
+      if (starred.has(key)) starred.delete(key);
+      else starred.add(key);
+      saveStarred();
       render();
     });
   });
